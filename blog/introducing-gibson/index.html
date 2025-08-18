@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://www.zero-day.ai/blog/introducing-gibson/" />
+<link rel="stylesheet" href="https://www.zero-day.ai/css/zero-day.css" />
+
+
+<meta name="description" content="Breaking the Black Box: Gibson Framework Launch Today we&rsquo;re excited to announce Gibson, an open source framework designed specifically for AI model security research. Named after the cyberpunk pioneer William Gibson, this toolkit embodies the spirit of exploration and understanding in the rapidly evolving landscape of AI security.
+Why Gibson? As AI models become increasingly integrated into critical systems, understanding their vulnerabilities and attack surfaces has never been more important. Gibson provides researchers with:
+"/>
+<meta name="keywords" content="AI Security, Machine Learning, Security Research, AI Vulnerabilities, Gibson Framework, Model Attacks, Adversarial ML, AI Red Team, Security Tools, Open Source Security, AI Hacking, Model Security, zero-day, AI Exploits"/>
+
+
+<meta name="twitter:image" content="/gibson-logo.png"/>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="">
+<meta name="twitter:site" content="https://zero-day.ai">
+
+<meta property="og:image" content="/gibson-logo.png" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="zero-day.ai — AI Security Research &amp; Open Source Tools" />
+<meta property="og:site_name" content="https://zero-day.ai" />
+
+
+<meta name="twitter:title" content="Introducing Gibson: The Open Source AI Model Hacking Framework"/>
+<meta name="twitter:description" content="Breaking the Black Box: Gibson Framework Launch Today we&rsquo;re excited to announce Gibson, an open source framework designed specifically for AI model security research. Named after the cyberpunk pioneer William Gibson, this toolkit embodies the spirit of exploration and understanding in the rapidly evolving landscape of AI security.
+Why Gibson? As AI models become increasingly integrated into critical systems, understanding their vulnerabilities and attack surfaces has never been more important. Gibson provides researchers with:
+"/>
+<meta property="og:description" content="AI Security, Machine Learning, Security Research, AI Vulnerabilities, Gibson Framework, Model Attacks, Adversarial ML, AI Red Team, Security Tools, Open Source Security, AI Hacking, Model Security, zero-day, AI Exploits"/>
+<meta property="og:title" content="Introducing Gibson: The Open Source AI Model Hacking Framework" />
+
+
+<title>
+
+zero-day.ai — AI Security Research &amp; Open Source Tools
+
+</title>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '');
+</script>
+</head><body><header class="header glow">
+  <span class="header-inner">
+    <span class="logo glow" title="zero-day">
+    <a href="/" class="logo" style="text-decoration: none">
+    <span class="color-highlight">[</span>
+    <span class="color-alt">gibson</span>
+    <span class="color-highlight">@</span>
+    <span class="color-highlight">zero-day</span>
+    <span class="color-alt">]: </span>
+    </a>
+    
+    <span class="color-highlight">  ~/introducing-gibson</span>
+    
+    <span class="color-alt">$</span>
+  <span class="logo-cursor"></span>
+</span>
+    <span class="header-right">
+      
+        <nav class="menu content-desktop">
+    <ul class="menu-inner menu-inner--desktop">
+        <li>./</li>
+        
+        <li><a href="../">../</a></li>
+        
+    </ul>
+</nav>
+
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      <a href="https://github.com/zero-day-ai/gibson" title="Gibson Framework" target="_blank" rel="noopener noreferrer" class="menu-icon">
+        
+<span class="content-fa">
+</span>
+
+      </a>
+      
+
+      
+      
+
+      
+      
+
+
+
+    </span>
+  </span>
+</header>
+<div id="content">
+
+  
+
+    <div class="flex-row">
+    <div class="content">
+
+      <div class="content-container">
+
+
+    <h1 class="content-h1">Introducing Gibson: The Open Source AI Model Hacking Framework</h1>
+    <div class="content-meta">
+          <div class="content-more">
+          
+            
+<span class="content-fa-p">
+</span>
+   zero-day.ai
+          
+          </div>
+    </div>
+
+    
+      <span class="content-meta">
+        
+          <a href="https://www.zero-day.ai/tags/gibson/">#gibson</a>&nbsp;
+        
+          <a href="https://www.zero-day.ai/tags/ai-security/">#ai-security</a>&nbsp;
+        
+          <a href="https://www.zero-day.ai/tags/framework/">#framework</a>&nbsp;
+        
+          <a href="https://www.zero-day.ai/tags/announcement/">#announcement</a>&nbsp;
+        
+      </span>
+    
+
+
+    <div class="post-content">
+      
+      <h2 id="breaking-the-black-box-gibson-framework-launch">Breaking the Black Box: Gibson Framework Launch</h2>
+<p>Today we&rsquo;re excited to announce <strong>Gibson</strong>, an open source framework designed specifically for AI model security research. Named after the cyberpunk pioneer William Gibson, this toolkit embodies the spirit of exploration and understanding in the rapidly evolving landscape of AI security.</p>
+<h2 id="why-gibson">Why Gibson?</h2>
+<p>As AI models become increasingly integrated into critical systems, understanding their vulnerabilities and attack surfaces has never been more important. Gibson provides researchers with:</p>
+<ul>
+<li><strong>Comprehensive Attack Toolkit</strong>: Pre-built modules for adversarial attacks, prompt injection, model extraction, and more</li>
+<li><strong>Defensive Capabilities</strong>: Tools for hardening models against known attack vectors</li>
+<li><strong>Research Infrastructure</strong>: Standardized benchmarks and evaluation metrics for security research</li>
+<li><strong>Extensible Architecture</strong>: Plugin system for custom attack and defense modules</li>
+</ul>
+<h2 id="core-features">Core Features</h2>
+<h3 id="1-adversarial-attack-generation">1. Adversarial Attack Generation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson <span style="color:#f92672">import</span> AdversarialEngine
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> AdversarialEngine(model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-4&#34;</span>)
+</span></span><span style="display:flex;"><span>adversarial_prompt <span style="color:#f92672">=</span> engine<span style="color:#f92672">.</span>generate_attack(
+</span></span><span style="display:flex;"><span>    target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classification&#34;</span>,
+</span></span><span style="display:flex;"><span>    method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gradient-based&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h3 id="2-model-vulnerability-scanning">2. Model Vulnerability Scanning</h3>
+<p>Gibson can automatically scan models for common vulnerabilities:</p>
+<ul>
+<li>Prompt injection susceptibility</li>
+<li>Data leakage potential</li>
+<li>Adversarial robustness</li>
+<li>Backdoor detection</li>
+</ul>
+<h3 id="3-defense-implementation">3. Defense Implementation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.defense <span style="color:#f92672">import</span> ModelHardener
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hardener <span style="color:#f92672">=</span> ModelHardener()
+</span></span><span style="display:flex;"><span>protected_model <span style="color:#f92672">=</span> hardener<span style="color:#f92672">.</span>apply_defenses(
+</span></span><span style="display:flex;"><span>    model<span style="color:#f92672">=</span>original_model,
+</span></span><span style="display:flex;"><span>    strategies<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;input_sanitization&#34;</span>, <span style="color:#e6db74">&#34;output_filtering&#34;</span>]
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h2 id="getting-started">Getting Started</h2>
+<p>Installation is straightforward:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install gibson-framework
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># or</span>
+</span></span><span style="display:flex;"><span>git clone https://github.com/zero-day-ai/gibson
+</span></span><span style="display:flex;"><span>cd gibson
+</span></span><span style="display:flex;"><span>pip install -e .
+</span></span></code></pre></div><h2 id="ethical-considerations">Ethical Considerations</h2>
+<p>Gibson is designed for legitimate security research and defensive purposes. We strongly encourage:</p>
+<ul>
+<li>Responsible disclosure of vulnerabilities</li>
+<li>Testing only on models you own or have permission to test</li>
+<li>Contributing defensive techniques back to the community</li>
+</ul>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>We&rsquo;re actively developing Gibson with the community. Upcoming features include:</p>
+<ul>
+<li>Support for multimodal models (vision, audio)</li>
+<li>Integration with popular ML frameworks</li>
+<li>Advanced evasion techniques</li>
+<li>Real-time monitoring capabilities</li>
+</ul>
+<h2 id="join-the-community">Join the Community</h2>
+<p>Gibson is more than just a tool—it&rsquo;s a community effort to advance AI security research. We welcome contributions, whether it&rsquo;s code, documentation, or research findings.</p>
+<ul>
+<li><strong>GitHub</strong>: <a href="https://github.com/zero-day-ai/gibson">github.com/zero-day-ai/gibson</a></li>
+<li><strong>Documentation</strong>: Coming soon</li>
+<li><strong>Discord</strong>: Join our research community (link coming soon)</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>As AI systems become more powerful and pervasive, the need for robust security research grows. Gibson provides the tools and infrastructure necessary to conduct this research effectively and ethically.</p>
+<p>Stay tuned for more updates, tutorials, and research findings as we continue to develop Gibson and explore the frontiers of AI security.</p>
+<hr>
+<p><em>Gibson is released under the MIT License. For bug reports and feature requests, please visit our GitHub repository.</em></p>
+
+    </div>
+    
+
+    
+      
+    
+      </div>
+  </div>
+  </div>
+
+        </div>
+    </body><footer class="footer">
+  <div class="content-p" style="text-align: center">
+      <div style="padding-bottom: 10px">2024 zero-day.ai | <a href="https://github.com/zero-day-ai/gibson">Gibson Framework</a></div>
+  </div>
+</footer></html>
