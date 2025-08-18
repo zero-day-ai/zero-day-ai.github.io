@@ -50,6 +50,6 @@ title = 'zero-day.ai'
         weight = 3
     [[menu.main]]
         identifier = "gibson"
-        name = "gibson"
-        url = "https://github.com/zero-day-ai/gibson"
+        name = "gibson by zeroday.ai"
+        url = "https://github.com/zero-day-ai/"
         weight = 4
