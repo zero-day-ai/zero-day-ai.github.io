@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on zero-day.ai</title>
-    <link>/categories/</link>
+    <link>https://www.zero-day.ai/categories/</link>
     <description>Recent content in Categories on zero-day.ai</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.zero-day.ai/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Research</title>
-      <link>/categories/research/</link>
+      <link>https://www.zero-day.ai/categories/research/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/categories/research/</guid>
+      <guid>https://www.zero-day.ai/categories/research/</guid>
       <description></description>
     </item>
     <item>
       <title>Tools</title>
-      <link>/categories/tools/</link>
+      <link>https://www.zero-day.ai/categories/tools/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/categories/tools/</guid>
+      <guid>https://www.zero-day.ai/categories/tools/</guid>
       <description></description>
     </item>
   </channel>

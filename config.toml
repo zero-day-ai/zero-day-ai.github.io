@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = 'https://www.zero-day.ai/'
 languageCode = 'en-us'
 title = 'zero-day.ai'
 

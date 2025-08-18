@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on zero-day.ai</title>
-    <link>/tags/</link>
+    <link>https://www.zero-day.ai/tags/</link>
     <description>Recent content in Tags on zero-day.ai</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.zero-day.ai/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ai-Security</title>
-      <link>/tags/ai-security/</link>
+      <link>https://www.zero-day.ai/tags/ai-security/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/tags/ai-security/</guid>
+      <guid>https://www.zero-day.ai/tags/ai-security/</guid>
       <description></description>
     </item>
     <item>
       <title>Announcement</title>
-      <link>/tags/announcement/</link>
+      <link>https://www.zero-day.ai/tags/announcement/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/tags/announcement/</guid>
+      <guid>https://www.zero-day.ai/tags/announcement/</guid>
       <description></description>
     </item>
     <item>
       <title>Framework</title>
-      <link>/tags/framework/</link>
+      <link>https://www.zero-day.ai/tags/framework/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/tags/framework/</guid>
+      <guid>https://www.zero-day.ai/tags/framework/</guid>
       <description></description>
     </item>
     <item>
       <title>Gibson</title>
-      <link>/tags/gibson/</link>
+      <link>https://www.zero-day.ai/tags/gibson/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/tags/gibson/</guid>
+      <guid>https://www.zero-day.ai/tags/gibson/</guid>
       <description></description>
     </item>
   </channel>
