@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on zero-day.ai</title>
-    <link>//localhost:1313/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on zero-day.ai</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ai-Security</title>
-      <link>//localhost:1313/tags/ai-security/</link>
+      <link>/tags/ai-security/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/ai-security/</guid>
+      <guid>/tags/ai-security/</guid>
       <description></description>
     </item>
     <item>
       <title>Announcement</title>
-      <link>//localhost:1313/tags/announcement/</link>
+      <link>/tags/announcement/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/announcement/</guid>
+      <guid>/tags/announcement/</guid>
       <description></description>
     </item>
     <item>
       <title>Framework</title>
-      <link>//localhost:1313/tags/framework/</link>
+      <link>/tags/framework/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/framework/</guid>
+      <guid>/tags/framework/</guid>
       <description></description>
     </item>
     <item>
       <title>Gibson</title>
-      <link>//localhost:1313/tags/gibson/</link>
+      <link>/tags/gibson/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/gibson/</guid>
+      <guid>/tags/gibson/</guid>
       <description></description>
     </item>
   </channel>
