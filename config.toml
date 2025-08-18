@@ -49,7 +49,7 @@ title = 'zero-day.ai'
         url = "/research"
         weight = 3
     [[menu.main]]
-        identifier = "gibson"
-        name = "gibson by zeroday.ai"
+        identifier = "github"
+        name = "github"
         url = "https://github.com/zero-day-ai/"
         weight = 4
