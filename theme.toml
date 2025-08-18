@@ -1,0 +1,47 @@
+name = "Prine"
+license = "Apache2"
+licenselink = "https://github.com/kris-nova/prine/blob/master/LICENSE"
+description = ""
+homepage = "https://nivenly.com/"
+tags = []
+features = []
+min_version = "0.41.0"
+baseURL = '/'
+languageCode = 'en-us'
+title = 'zero-day.ai'
+subtitle = 'AI Security Research & Open Source Tools'
+theme = "prine"
+
+[author]
+  name = "zero-day.ai"
+  homepage = "https://zero-day.ai"
+  
+[params]
+    description = "Cutting-edge AI security research and open source tools. Home of Gibson - the AI model hacking framework. Exploring vulnerabilities, defenses, and the future of AI security."
+    keywords = "AI Security, Machine Learning, Security Research, AI Vulnerabilities, Gibson Framework, Model Attacks, Adversarial ML, AI Red Team, Security Tools, Open Source Security, AI Hacking, Model Security, zero-day, AI Exploits"
+    gibsonLogo = "/gibson-logo.png"
+    twitterURL = ""
+    twitterText = ""
+    githubURL = "https://github.com/zero-day-ai/gibson"
+    githubText = "Gibson Framework"
+    discordURL = ""
+    discordText = ""
+    youtubeURL = ""
+    youtubeText = ""
+    settingsURL = ""
+    settingsText = ""
+    copyright = "2024 zero-day.ai"
+    googleAnalyticsID = ""
+    unfurlLogo = "/gibson-logo.png"
+    unfurlCreator = "zero-day.ai"
+    unfurlSite = "https://zero-day.ai"
+    unfurlTitle = "zero-day.ai | AI Security Research & Gibson Framework"
+
+[languages.en.params.logo]
+    logoUser = "gibson"
+    logoHost = "zero-day"
+[languages.en.menu]
+    [[languages.en.menu.main]]
+        identifier = "readme"
+        name = "readme"
+        url = "/readme"

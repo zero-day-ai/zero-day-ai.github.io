@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zero-day.ai</title>
+    <link>//localhost:1313/</link>
+    <description>Recent content on zero-day.ai</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducing Gibson: The Open Source AI Model Hacking Framework</title>
+      <link>//localhost:1313/blog/introducing-gibson/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/blog/introducing-gibson/</guid>
+      <description>&lt;h2 id=&#34;breaking-the-black-box-gibson-framework-launch&#34;&gt;Breaking the Black Box: Gibson Framework Launch&lt;/h2&gt;&#xA;&lt;p&gt;Today we&amp;rsquo;re excited to announce &lt;strong&gt;Gibson&lt;/strong&gt;, an open source framework designed specifically for AI model security research. Named after the cyberpunk pioneer William Gibson, this toolkit embodies the spirit of exploration and understanding in the rapidly evolving landscape of AI security.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-gibson&#34;&gt;Why Gibson?&lt;/h2&gt;&#xA;&lt;p&gt;As AI models become increasingly integrated into critical systems, understanding their vulnerabilities and attack surfaces has never been more important. Gibson provides researchers with:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

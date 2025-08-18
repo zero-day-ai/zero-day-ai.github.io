@@ -1,0 +1,55 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = 'zero-day.ai'
+
+[params]
+    subtitle = 'AI Security Research & Open Source Tools'
+    description = "Cutting-edge AI security research and open source tools. Home of Gibson - the AI model hacking framework. Exploring vulnerabilities, defenses, and the future of AI security."
+    keywords = "AI Security, Machine Learning, Security Research, AI Vulnerabilities, Gibson Framework, Model Attacks, Adversarial ML, AI Red Team, Security Tools, Open Source Security, AI Hacking, Model Security, zero-day, AI Exploits"
+    gibsonLogo = ""
+    twitterURL = ""
+    twitterText = ""
+    githubURL = "https://github.com/zero-day-ai/gibson"
+    githubText = "Gibson Framework"
+    discordURL = ""
+    discordText = ""
+    youtubeURL = ""
+    youtubeText = ""
+    settingsURL = ""
+    settingsText = ""
+    copyright = "2024 zero-day.ai"
+    googleAnalyticsID = ""
+    unfurlLogo = "/gibson-logo.png"
+    unfurlCreator = ""
+    unfurlSite = "https://zero-day.ai"
+    unfurlTitle = "zero-day.ai | AI Security Research & Gibson Framework"
+
+[params.logo]
+    logoUser = "gibson"
+    logoHost = "zero-day"
+
+[author]
+  name = "zero-day.ai"
+  homepage = "https://zero-day.ai"
+
+[menu]
+    [[menu.main]]
+        identifier = "home"
+        name = "home"
+        url = "/"
+        weight = 1
+    [[menu.main]]
+        identifier = "blog"
+        name = "blog"
+        url = "/blog"
+        weight = 2
+    [[menu.main]]
+        identifier = "research"
+        name = "research"
+        url = "/research"
+        weight = 3
+    [[menu.main]]
+        identifier = "gibson"
+        name = "gibson"
+        url = "https://github.com/zero-day-ai/gibson"
+        weight = 4

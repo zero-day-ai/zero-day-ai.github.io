@@ -1,0 +1,50 @@
+<header class="header glow">
+  <span class="header-inner">
+    {{ partial "logo.html" . }}
+    <span class="header-right">
+      {{ if len $.Site.Menus }}
+        {{ partial "menu.html" . }}
+      {{ end }}
+
+      <!--Settings-->
+      {{ if $.Site.Params.SettingsURL }}
+      <span class="color-base">
+      <a href="{{ $.Site.Params.SettingsURL }}" title="{{ $.Site.Params.SettingsText }}" target="_blank" rel="noopener noreferrer" class="menu-icon">
+        {{ partial "fa.html" "sliders" }}
+      </a>
+      </span>
+      {{ end }}
+
+      <!--Twitter-->
+      {{ if $.Site.Params.TwitterURL }}
+      <a href="{{ $.Site.Params.TwitterURL }}" title="{{ $.Site.Params.TwitterText }}" target="_blank" rel="noopener noreferrer" class="menu-icon">
+        {{ partial "fa.html" "twitter" }}
+      </a>
+      {{ end }}
+
+      <!--GitHub-->
+      {{ if $.Site.Params.GithubURL }}
+      <a href="{{ $.Site.Params.GithubURL }}" title="{{ $.Site.Params.GithubText }}" target="_blank" rel="noopener noreferrer" class="menu-icon">
+        {{ partial "fa.html" "github" }}
+      </a>
+      {{ end }}
+
+      <!--Discord-->
+      {{ if $.Site.Params.DiscordURL }}
+      <a href="{{ $.Site.Params.DiscordURL }}" title="{{ $.Site.Params.DiscordText }}" target="_blank" rel="noopener noreferrer" class="menu-icon">
+        {{ partial "fa.html" "discord" }}
+      </a>
+      {{ end }}
+
+      <!--YouTube-->
+      {{ if $.Site.Params.YoutubeURL }}
+      <a href="{{ $.Site.Params.YoutubeURL }}" title="{{ $.Site.Params.YoutubeText }}" target="_blank" rel="noopener noreferrer" class="menu-icon">
+        {{ partial "fa.html" "youtube" }}
+      </a>
+      {{ end }}
+
+
+
+    </span>
+  </span>
+</header>
