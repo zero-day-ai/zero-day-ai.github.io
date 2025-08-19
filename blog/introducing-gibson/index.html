@@ -156,37 +156,109 @@ gtag('config', '');
 <li><strong>Extensible Architecture</strong>: Plugin system for custom attack and defense modules</li>
 </ul>
 <h2 id="core-features">Core Features</h2>
-<h3 id="1-adversarial-attack-generation">1. Adversarial Attack Generation</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson <span style="color:#f92672">import</span> AdversarialEngine
+<h3 id="1-modular-security-testing-architecture">1. Modular Security Testing Architecture</h3>
+<p>Gibson uses a powerful base module system that allows for extensible security testing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.modules.base <span style="color:#f92672">import</span> BaseModule, ModuleResult
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.models.scan <span style="color:#f92672">import</span> Finding
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> AdversarialEngine(model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-4&#34;</span>)
-</span></span><span style="display:flex;"><span>adversarial_prompt <span style="color:#f92672">=</span> engine<span style="color:#f92672">.</span>generate_attack(
-</span></span><span style="display:flex;"><span>    target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classification&#34;</span>,
-</span></span><span style="display:flex;"><span>    method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gradient-based&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><h3 id="2-model-vulnerability-scanning">2. Model Vulnerability Scanning</h3>
-<p>Gibson can automatically scan models for common vulnerabilities:</p>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomSecurityModule</span>(BaseModule):
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;custom_security&#34;</span>
+</span></span><span style="display:flex;"><span>    owasp_categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;LLM01&#34;</span>, <span style="color:#e6db74">&#34;LLM07&#34;</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self, target: str, context: Dict) <span style="color:#f92672">-&gt;</span> ModuleResult:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Implement security testing logic</span>
+</span></span><span style="display:flex;"><span>        findings <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Test and detect vulnerabilities</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ModuleResult(success<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, findings<span style="color:#f92672">=</span>findings)
+</span></span></code></pre></div><h3 id="2-advanced-prompt-injection-detection">2. Advanced Prompt Injection Detection</h3>
+<p>The framework includes a sophisticated prompt injection module with external registry support:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.modules.prompt_injection <span style="color:#f92672">import</span> PromptInjectionModule
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>module <span style="color:#f92672">=</span> PromptInjectionModule()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Supports multiple testing modes: quick, thorough, exhaustive</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Tests against OWASP LLM01 and LLM07 categories</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> module<span style="color:#f92672">.</span>run(target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://api.example.com/llm&#34;</span>)
+</span></span></code></pre></div><p>Key capabilities:</p>
 <ul>
-<li>Prompt injection susceptibility</li>
-<li>Data leakage potential</li>
-<li>Adversarial robustness</li>
-<li>Backdoor detection</li>
+<li>Dynamic prompt registry integration</li>
+<li>Rate-limited testing with configurable throughness</li>
+<li>Multiple parameter name detection (message, prompt, input, query, text)</li>
+<li>Confidence scoring and evidence collection</li>
+<li>OWASP-aligned vulnerability categorization</li>
 </ul>
-<h3 id="3-defense-implementation">3. Defense Implementation</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.defense <span style="color:#f92672">import</span> ModelHardener
+<h3 id="3-module-management-system">3. Module Management System</h3>
+<p>Gibson features a comprehensive module management system for organizing security tests:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.services.module_manager <span style="color:#f92672">import</span> ModuleManager
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>hardener <span style="color:#f92672">=</span> ModelHardener()
-</span></span><span style="display:flex;"><span>protected_model <span style="color:#f92672">=</span> hardener<span style="color:#f92672">.</span>apply_defenses(
-</span></span><span style="display:flex;"><span>    model<span style="color:#f92672">=</span>original_model,
-</span></span><span style="display:flex;"><span>    strategies<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;input_sanitization&#34;</span>, <span style="color:#e6db74">&#34;output_filtering&#34;</span>]
+</span></span><span style="display:flex;"><span>manager <span style="color:#f92672">=</span> ModuleManager(context)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Search and install modules from registry</span>
+</span></span><span style="display:flex;"><span>modules <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#34;injection&#34;</span>, category<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;llm-security&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>install(<span style="color:#e6db74">&#34;advanced-jailbreak-detector&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable/disable modules dynamically</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>enable_module(<span style="color:#e6db74">&#34;prompt_injection&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Execute modules with automatic dependency resolution</span>
+</span></span><span style="display:flex;"><span>findings <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>execute_module(<span style="color:#e6db74">&#34;prompt_injection&#34;</span>, target)
+</span></span></code></pre></div><h3 id="4-real-time-security-monitoring--logging">4. Real-Time Security Monitoring &amp; Logging</h3>
+<p>Gibson provides granular logging capabilities for all security modules:</p>
+<ul>
+<li><strong>Module-level logging</strong>: Enable/disable logging per module</li>
+<li><strong>Finding severity tracking</strong>: Log events by severity (low, medium, high, critical)</li>
+<li><strong>Evidence preservation</strong>: Automatic capture of attack payloads and responses</li>
+<li><strong>Performance metrics</strong>: Track execution duration and success rates</li>
+<li><strong>Database persistence</strong>: SQLite-based storage for historical analysis</li>
+</ul>
+<h3 id="5-extensible-finding-system">5. Extensible Finding System</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>finding <span style="color:#f92672">=</span> module<span style="color:#f92672">.</span>create_finding(
+</span></span><span style="display:flex;"><span>    title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Prompt Injection Vulnerability&#34;</span>,
+</span></span><span style="display:flex;"><span>    severity<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;high&#34;</span>,
+</span></span><span style="display:flex;"><span>    confidence<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>,
+</span></span><span style="display:flex;"><span>    evidence<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;payload&#34;</span>: malicious_prompt, <span style="color:#e6db74">&#34;response&#34;</span>: llm_response},
+</span></span><span style="display:flex;"><span>    owasp_category<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;LLM01&#34;</span>,
+</span></span><span style="display:flex;"><span>    remediation<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Implement input validation and prompt filtering&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span></code></pre></div><h2 id="getting-started">Getting Started</h2>
 <p>Installation is straightforward:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install gibson-framework
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># or</span>
-</span></span><span style="display:flex;"><span>git clone https://github.com/zero-day-ai/gibson
-</span></span><span style="display:flex;"><span>cd gibson
+</span></span><span style="display:flex;"><span>git clone https://github.com/zero-day-ai/gibson-framework
+</span></span><span style="display:flex;"><span>cd gibson-framework
 </span></span><span style="display:flex;"><span>pip install -e .
+</span></span></code></pre></div><h3 id="quick-start-example">Quick Start Example</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.services.module_manager <span style="color:#f92672">import</span> ModuleManager
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.core.context <span style="color:#f92672">import</span> Context
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize Gibson</span>
+</span></span><span style="display:flex;"><span>context <span style="color:#f92672">=</span> Context()
+</span></span><span style="display:flex;"><span>manager <span style="color:#f92672">=</span> ModuleManager(context)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>initialize()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># List available modules</span>
+</span></span><span style="display:flex;"><span>modules <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>list_installed(category<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;llm-security&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> module <span style="color:#f92672">in</span> modules:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>module<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>module<span style="color:#f92672">.</span>description<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run a security scan</span>
+</span></span><span style="display:flex;"><span>target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://your-llm-api.com/chat&#34;</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>execute_module(<span style="color:#e6db74">&#34;prompt_injection&#34;</span>, target)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Process findings</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> finding <span style="color:#f92672">in</span> results:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[</span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>severity<span style="color:#e6db74">}</span><span style="color:#e6db74">] </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>title<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;  Confidence: </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>confidence<span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;  OWASP: </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>owasp_category<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="command-line-interface">Command Line Interface</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Scan a target with specific modules</span>
+</span></span><span style="display:flex;"><span>gibson scan --modules prompt_injection --target https://api.example.com/llm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install new modules from registry</span>
+</span></span><span style="display:flex;"><span>gibson module install advanced-jailbreak-detector
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># List all available modules</span>
+</span></span><span style="display:flex;"><span>gibson module list --category llm-security
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable detailed logging for specific modules</span>
+</span></span><span style="display:flex;"><span>gibson config set logging.modules.prompt_injection true
 </span></span></code></pre></div><h2 id="ethical-considerations">Ethical Considerations</h2>
 <p>Gibson is designed for legitimate security research and defensive purposes. We strongly encourage:</p>
 <ul>
@@ -194,13 +266,40 @@ gtag('config', '');
 <li>Testing only on models you own or have permission to test</li>
 <li>Contributing defensive techniques back to the community</li>
 </ul>
-<h2 id="whats-next">What&rsquo;s Next?</h2>
+<h2 id="architecture-deep-dive">Architecture Deep Dive</h2>
+<h3 id="module-discovery--loading">Module Discovery &amp; Loading</h3>
+<p>Gibson employs a sophisticated module discovery system that automatically registers security modules from the filesystem:</p>
+<ul>
+<li><strong>Dynamic module loading</strong>: Modules are loaded on-demand using Python&rsquo;s importlib</li>
+<li><strong>Hash-based integrity</strong>: SHA256 verification ensures module integrity</li>
+<li><strong>Module manifests</strong>: YAML-based configuration for module metadata and dependencies</li>
+<li><strong>Hot-reload support</strong>: Modules can be updated without restarting the framework</li>
+</ul>
+<h3 id="database-backed-module-registry">Database-Backed Module Registry</h3>
+<p>All modules are tracked in a SQLite database with:</p>
+<ul>
+<li>Module versioning and update tracking</li>
+<li>Category-based organization (llm-security, api-security, etc.)</li>
+<li>OWASP category mapping for compliance</li>
+<li>Installation timestamps and update history</li>
+</ul>
+<h3 id="async-first-design">Async-First Design</h3>
+<p>The entire framework is built on async/await patterns for maximum performance:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Concurrent module execution</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>gather(
+</span></span><span style="display:flex;"><span>    module1<span style="color:#f92672">.</span>run(target),
+</span></span><span style="display:flex;"><span>    module2<span style="color:#f92672">.</span>run(target),
+</span></span><span style="display:flex;"><span>    module3<span style="color:#f92672">.</span>run(target)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h2 id="whats-next">What&rsquo;s Next?</h2>
 <p>We&rsquo;re actively developing Gibson with the community. Upcoming features include:</p>
 <ul>
-<li>Support for multimodal models (vision, audio)</li>
-<li>Integration with popular ML frameworks</li>
-<li>Advanced evasion techniques</li>
-<li>Real-time monitoring capabilities</li>
+<li><strong>Enhanced Prompt Registry</strong>: Integration with community-sourced prompt databases</li>
+<li><strong>Multi-Model Testing</strong>: Parallel testing across different LLM providers</li>
+<li><strong>Automated Report Generation</strong>: PDF/HTML security assessment reports</li>
+<li><strong>CI/CD Integration</strong>: GitHub Actions and GitLab CI plugins</li>
+<li><strong>Real-time Dashboard</strong>: Web-based monitoring interface for continuous security assessment</li>
+<li><strong>Advanced Module Chaining</strong>: Complex attack scenarios through module composition</li>
 </ul>
 <h2 id="join-the-community">Join the Community</h2>
 <p>Gibson is more than just a tool—it&rsquo;s a community effort to advance AI security research. We welcome contributions, whether it&rsquo;s code, documentation, or research findings.</p>
