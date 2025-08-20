@@ -10,7 +10,7 @@ description: "Announcing Gibson - a comprehensive framework for AI model securit
 
 ## Breaking the Black Box: Gibson Framework Launch
 
-Today we're excited to announce **Gibson**, an open source framework designed specifically for AI model security research. Named after the cyberpunk pioneer William Gibson, this toolkit embodies the spirit of exploration and understanding in the rapidly evolving landscape of AI security.
+Today we're excited to announce **Gibson**, an open source framework designed specifically for AI model security research. This toolkit embodies the spirit of exploration and understanding in the rapidly evolving landscape of AI security.
 
 ## Why Gibson?
 
