@@ -146,13 +146,6 @@ gibson module list --category llm-security
 gibson config set logging.modules.prompt_injection true
 ```
 
-## Ethical Considerations
-
-Gibson is designed for legitimate security research and defensive purposes. We strongly encourage:
-- Responsible disclosure of vulnerabilities
-- Testing only on models you own or have permission to test
-- Contributing defensive techniques back to the community
-
 ## Architecture Deep Dive
 
 ### Module Discovery & Loading
@@ -179,6 +172,86 @@ results = await asyncio.gather(
     module3.run(target)
 )
 ```
+
+## Graph-Based Attack Path Visualization
+
+### Mapping the LLM Attack Surface with Neo4j
+
+Gibson integrates with Neo4j to provide powerful graph-based visualization of attack paths and vulnerability relationships. This feature enables security researchers to visually track and analyze complex attack chains in Large Language Models, helping identify critical conversation edges that lead to exploitation.
+
+```
+                    ┌─────────────────┐
+                    │ Initial Prompt  │
+                    └────────┬────────┘
+                             │
+                    ┌────────▼────────┐
+                    │  LLM Response   │
+                    └────┬───────┬────┘
+                         │       │
+              ┌──────────▼──┐   │
+              │ Benign Path │   │
+              └─────────────┘   │
+                                │
+                    ┌───────────▼────────────┐
+                    │ Potential Vulnerability│ [RISK: Medium]
+                    └───────────┬────────────┘
+                                │
+                    ┌───────────▼────────────┐
+                    │ Prompt Injection Point │ [RISK: High]
+                    └────────┬──────┬────────┘
+                             │      │
+                ┌────────────▼──┐  ┌▼─────────────────┐
+                │ System Prompt │  │ Jailbreak Success│ [RISK: Critical]
+                │     Leak      │  └──────────┬───────┘
+                └───────┬───────┘             │
+                        │                     │
+            ┌───────────▼──────────┐   ┌─────▼──────────┐
+            │  Data Exfiltration   │   │ Bypassed Safety│
+            │  [RISK: Critical]    │   └─────────┬──────┘
+            └──────────────────────┘             │
+                                        ┌─────────▼──────────┐
+                                        │  Malicious Output  │
+                                        │  [RISK: Critical]  │
+                                        └────────────────────┘
+
+Legend: [RISK: Low] → [RISK: Medium] → [RISK: High] → [RISK: Critical]
+```
+
+#### Key Capabilities:
+
+- **Attack Path Discovery**: Automatically maps conversation flows that lead to successful exploits, revealing previously hidden attack vectors
+- **Vulnerability Relationship Mapping**: Visualizes how different vulnerabilities connect and compound, showing exploit chains that combine multiple weaknesses
+- **Conversation Edge Analysis**: Identifies critical transition points in dialogues where models become vulnerable to manipulation
+- **Exploit Pattern Recognition**: Discovers recurring patterns across different attack attempts, building a knowledge graph of exploitation techniques
+- **Risk Scoring Visualization**: Color-codes paths based on severity and likelihood of success, helping prioritize remediation efforts
+
+#### Example Neo4j Query:
+```cypher
+// Find all paths leading to successful jailbreaks
+MATCH path = (prompt:InitialPrompt)-[:TRIGGERS*]->(jailbreak:SuccessfulExploit)
+WHERE jailbreak.type = 'JAILBREAK'
+RETURN path, 
+       length(path) as chain_length,
+       [node in nodes(path) | node.confidence] as confidence_scores
+ORDER BY chain_length ASC
+LIMIT 10
+```
+
+This graph-based approach transforms abstract security assessments into intuitive visual maps, enabling researchers to:
+- Quickly identify the shortest paths to exploitation
+- Understand complex multi-step attack chains
+- Discover unexpected vulnerability combinations
+- Track the evolution of attack techniques over time
+- Share reproducible attack research with visual evidence
+
+## Ethical Considerations
+
+Gibson is designed for legitimate security research and defensive purposes. We strongly encourage:
+ - Responsible disclosure of vulnerabilities
+ - Testing only on models you own or have permission to test
+ - Contributing defensive techniques back to the communi
+
+
 
 ## What's Next?
 

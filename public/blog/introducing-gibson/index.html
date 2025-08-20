@@ -259,14 +259,7 @@ gtag('config', '');
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable detailed logging for specific modules</span>
 </span></span><span style="display:flex;"><span>gibson config set logging.modules.prompt_injection true
-</span></span></code></pre></div><h2 id="ethical-considerations">Ethical Considerations</h2>
-<p>Gibson is designed for legitimate security research and defensive purposes. We strongly encourage:</p>
-<ul>
-<li>Responsible disclosure of vulnerabilities</li>
-<li>Testing only on models you own or have permission to test</li>
-<li>Contributing defensive techniques back to the community</li>
-</ul>
-<h2 id="architecture-deep-dive">Architecture Deep Dive</h2>
+</span></span></code></pre></div><h2 id="architecture-deep-dive">Architecture Deep Dive</h2>
 <h3 id="module-discovery--loading">Module Discovery &amp; Loading</h3>
 <p>Gibson employs a sophisticated module discovery system that automatically registers security modules from the filesystem:</p>
 <ul>
@@ -291,7 +284,77 @@ gtag('config', '');
 </span></span><span style="display:flex;"><span>    module2<span style="color:#f92672">.</span>run(target),
 </span></span><span style="display:flex;"><span>    module3<span style="color:#f92672">.</span>run(target)
 </span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><h2 id="whats-next">What&rsquo;s Next?</h2>
+</span></span></code></pre></div><h2 id="graph-based-attack-path-visualization">Graph-Based Attack Path Visualization</h2>
+<h3 id="mapping-the-llm-attack-surface-with-neo4j">Mapping the LLM Attack Surface with Neo4j</h3>
+<p>Gibson integrates with Neo4j to provide powerful graph-based visualization of attack paths and vulnerability relationships. This feature enables security researchers to visually track and analyze complex attack chains in Large Language Models, helping identify critical conversation edges that lead to exploitation.</p>
+<pre tabindex="0"><code>                    ┌─────────────────┐
+                    │ Initial Prompt  │
+                    └────────┬────────┘
+                             │
+                    ┌────────▼────────┐
+                    │  LLM Response   │
+                    └────┬───────┬────┘
+                         │       │
+              ┌──────────▼──┐   │
+              │ Benign Path │   │
+              └─────────────┘   │
+                                │
+                    ┌───────────▼────────────┐
+                    │ Potential Vulnerability│ [RISK: Medium]
+                    └───────────┬────────────┘
+                                │
+                    ┌───────────▼────────────┐
+                    │ Prompt Injection Point │ [RISK: High]
+                    └────────┬──────┬────────┘
+                             │      │
+                ┌────────────▼──┐  ┌▼─────────────────┐
+                │ System Prompt │  │ Jailbreak Success│ [RISK: Critical]
+                │     Leak      │  └──────────┬───────┘
+                └───────┬───────┘             │
+                        │                     │
+            ┌───────────▼──────────┐   ┌─────▼──────────┐
+            │  Data Exfiltration   │   │ Bypassed Safety│
+            │  [RISK: Critical]    │   └─────────┬──────┘
+            └──────────────────────┘             │
+                                        ┌─────────▼──────────┐
+                                        │  Malicious Output  │
+                                        │  [RISK: Critical]  │
+                                        └────────────────────┘
+
+Legend: [RISK: Low] → [RISK: Medium] → [RISK: High] → [RISK: Critical]
+</code></pre><h4 id="key-capabilities">Key Capabilities:</h4>
+<ul>
+<li><strong>Attack Path Discovery</strong>: Automatically maps conversation flows that lead to successful exploits, revealing previously hidden attack vectors</li>
+<li><strong>Vulnerability Relationship Mapping</strong>: Visualizes how different vulnerabilities connect and compound, showing exploit chains that combine multiple weaknesses</li>
+<li><strong>Conversation Edge Analysis</strong>: Identifies critical transition points in dialogues where models become vulnerable to manipulation</li>
+<li><strong>Exploit Pattern Recognition</strong>: Discovers recurring patterns across different attack attempts, building a knowledge graph of exploitation techniques</li>
+<li><strong>Risk Scoring Visualization</strong>: Color-codes paths based on severity and likelihood of success, helping prioritize remediation efforts</li>
+</ul>
+<h4 id="example-neo4j-query">Example Neo4j Query:</h4>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">// Find all paths leading to successful jailbreaks
+MATCH path = (prompt:InitialPrompt)-[:TRIGGERS*]-&gt;(jailbreak:SuccessfulExploit)
+WHERE jailbreak.type = &#39;JAILBREAK&#39;
+RETURN path, 
+       length(path) as chain_length,
+       [node in nodes(path) | node.confidence] as confidence_scores
+ORDER BY chain_length ASC
+LIMIT 10
+</code></pre><p>This graph-based approach transforms abstract security assessments into intuitive visual maps, enabling researchers to:</p>
+<ul>
+<li>Quickly identify the shortest paths to exploitation</li>
+<li>Understand complex multi-step attack chains</li>
+<li>Discover unexpected vulnerability combinations</li>
+<li>Track the evolution of attack techniques over time</li>
+<li>Share reproducible attack research with visual evidence</li>
+</ul>
+<h2 id="ethical-considerations">Ethical Considerations</h2>
+<p>Gibson is designed for legitimate security research and defensive purposes. We strongly encourage:</p>
+<ul>
+<li>Responsible disclosure of vulnerabilities</li>
+<li>Testing only on models you own or have permission to test</li>
+<li>Contributing defensive techniques back to the communi</li>
+</ul>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
 <p>We&rsquo;re actively developing Gibson with the community. Upcoming features include:</p>
 <ul>
 <li><strong>Enhanced Prompt Registry</strong>: Integration with community-sourced prompt databases</li>
