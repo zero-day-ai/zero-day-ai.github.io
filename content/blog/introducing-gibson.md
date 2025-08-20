@@ -1,183 +1,62 @@
 ---
-title: "Introducing Gibson: The Open Source AI Model Hacking Framework"
+title: "Introducing Gibson: The Open Source AI Security Research Framework"
 date: 2024-01-15
 draft: false
-tags: ["gibson", "ai-security", "framework", "announcement"]
+tags: ["gibson", "ai-security", "framework", "announcement", "owasp", "llm-security"]
 categories: ["tools", "research"]
 author: "zero-day.ai"
-description: "Announcing Gibson - a comprehensive framework for AI model security research, vulnerability testing, and defensive strategies."
+description: "Gibson is a comprehensive framework for AI security research, providing advanced tools for vulnerability testing, attack pattern analysis, and defensive strategies based on the OWASP AI Top 10."
 ---
 
-## Breaking the Black Box: Gibson Framework Launch
+## Building the Future of AI Security Research: Gibson Framework
 
-Today we're excited to announce **Gibson**, an open source framework designed specifically for AI model security research. This toolkit embodies the spirit of exploration and understanding in the rapidly evolving landscape of AI security.
+Today we're excited to showcase **Gibson**, a rapidly evolving open source framework specifically designed for comprehensive AI security research and testing. Built on the OWASP AI Top 10, Gibson transforms the complex landscape of AI security into actionable, systematic research workflows.
 
-## Why Gibson?
+## The AI Security Challenge
 
-As AI models become increasingly integrated into critical systems, understanding their vulnerabilities and attack surfaces has never been more important. Gibson provides researchers with:
+As AI models become the backbone of critical applications—from healthcare systems to financial platforms—understanding their vulnerabilities has become a mission-critical requirement. Traditional security testing falls short when applied to AI systems, which require specialized knowledge of prompt injection, model theft, training data poisoning, and emergent AI-specific attack vectors.
 
-- **Comprehensive Attack Toolkit**: Pre-built modules for adversarial attacks, prompt injection, model extraction, and more
-- **Defensive Capabilities**: Tools for hardening models against known attack vectors
-- **Research Infrastructure**: Standardized benchmarks and evaluation metrics for security research
-- **Extensible Architecture**: Plugin system for custom attack and defense modules
+Gibson bridges this gap by providing researchers, security teams, and developers with:
 
-## Core Features
+- **OWASP-Aligned Security Modules**: Production-ready modules covering the entire OWASP AI Top 10
+- **Advanced Module Management System**: Database-backed registry with automated discovery, installation, and version control
+- **Graph-Based Attack Analysis**: Revolutionary Neo4j integration for visualizing attack paths and conversation flows
+- **Enterprise-Grade Architecture**: Async-first design built for scale, with SQLAlchemy 2.0 and comprehensive logging
+- **Extensible Framework**: Developer-friendly plugin system for custom security research
 
-### 1. Modular Security Testing Architecture
-Gibson uses a powerful base module system that allows for extensible security testing:
-```python
-from gibson.modules.base import BaseModule, ModuleResult
-from gibson.models.scan import Finding
+## What Makes Gibson Different
 
-class CustomSecurityModule(BaseModule):
-    name = "custom_security"
-    owasp_categories = ["LLM01", "LLM07"]
-    
-    async def run(self, target: str, context: Dict) -> ModuleResult:
-        # Implement security testing logic
-        findings = []
-        # Test and detect vulnerabilities
-        return ModuleResult(success=True, findings=findings)
-```
+### 1. Production-Ready OWASP AI Security Modules
+Gibson ships with a complete suite of security modules that map directly to the OWASP AI Top 10:
 
-### 2. Advanced Prompt Injection Detection
-The framework includes a sophisticated prompt injection module with external registry support:
+- **Prompt Injection (LLM01)**: Advanced detection with multi-turn conversation analysis and dynamic payload generation
+- **Insecure Output Handling (LLM02)**: Comprehensive output validation and sanitization testing
+- **Training Data Poisoning (LLM03)**: Detection frameworks for compromised training datasets
+- **Model Denial of Service (LLM04)**: Resource exhaustion and availability testing
+- **Model Theft (LLM05)**: Advanced techniques for detecting model extraction vulnerabilities
+- **Sensitive Information Disclosure (LLM06)**: Systematic testing for data leakage and privacy violations
+- **System Prompt Leakage**: Cutting-edge module with forensic-grade evidence collection and business impact analysis
+
+Each module includes:
 ```python
 from gibson.modules.prompt_injection import PromptInjectionModule
 
-module = PromptInjectionModule()
-# Supports multiple testing modes: quick, thorough, exhaustive
-# Tests against OWASP LLM01 and LLM07 categories
-result = await module.run(target="https://api.example.com/llm")
-```
-
-Key capabilities:
-- Dynamic prompt registry integration
-- Rate-limited testing with configurable throughness
-- Multiple parameter name detection (message, prompt, input, query, text)
-- Confidence scoring and evidence collection
-- OWASP-aligned vulnerability categorization
-
-### 3. Module Management System
-Gibson features a comprehensive module management system for organizing security tests:
-```python
-from gibson.services.module_manager import ModuleManager
-
-manager = ModuleManager(context)
-# Search and install modules from registry
-modules = await manager.search("injection", category="llm-security")
-await manager.install("advanced-jailbreak-detector")
-
-# Enable/disable modules dynamically
-await manager.enable_module("prompt_injection")
-# Execute modules with automatic dependency resolution
-findings = await manager.execute_module("prompt_injection", target)
-```
-
-### 4. Real-Time Security Monitoring & Logging
-Gibson provides granular logging capabilities for all security modules:
-- **Module-level logging**: Enable/disable logging per module
-- **Finding severity tracking**: Log events by severity (low, medium, high, critical)
-- **Evidence preservation**: Automatic capture of attack payloads and responses
-- **Performance metrics**: Track execution duration and success rates
-- **Database persistence**: SQLite-based storage for historical analysis
-
-### 5. Extensible Finding System
-```python
-finding = module.create_finding(
-    title="Prompt Injection Vulnerability",
-    severity="high",
-    confidence=80,
-    evidence={"payload": malicious_prompt, "response": llm_response},
-    owasp_category="LLM01",
-    remediation="Implement input validation and prompt filtering"
+# Load and execute security module
+module = await manager.load('prompt-injection')
+result = await manager.execute(
+    'prompt-injection', 
+    'https://your-llm-api.com/chat',
+    config={'thoroughness': 'exhaustive'}
 )
-```
 
-## Getting Started
-
-Installation is straightforward:
-```bash
-pip install gibson-framework
-# or
-git clone https://github.com/zero-day-ai/gibson-framework
-cd gibson-framework
-pip install -e .
-```
-
-### Quick Start Example
-```python
-from gibson.services.module_manager import ModuleManager
-from gibson.core.context import Context
-
-# Initialize Gibson
-context = Context()
-manager = ModuleManager(context)
-await manager.initialize()
-
-# List available modules
-modules = await manager.list_installed(category="llm-security")
-for module in modules:
-    print(f"{module.name}: {module.description}")
-
-# Run a security scan
-target = "https://your-llm-api.com/chat"
-results = await manager.execute_module("prompt_injection", target)
-
-# Process findings
-for finding in results:
+for finding in result.findings:
     print(f"[{finding.severity}] {finding.title}")
-    print(f"  Confidence: {finding.confidence}%")
-    print(f"  OWASP: {finding.owasp_category}")
+    print(f"OWASP: {finding.owasp_category}")
+    print(f"Evidence: {finding.evidence}")
 ```
 
-### Command Line Interface
-```bash
-# Scan a target with specific modules
-gibson scan --modules prompt_injection --target https://api.example.com/llm
-
-# Install new modules from registry
-gibson module install advanced-jailbreak-detector
-
-# List all available modules
-gibson module list --category llm-security
-
-# Enable detailed logging for specific modules
-gibson config set logging.modules.prompt_injection true
-```
-
-## Architecture Deep Dive
-
-### Module Discovery & Loading
-Gibson employs a sophisticated module discovery system that automatically registers security modules from the filesystem:
-- **Dynamic module loading**: Modules are loaded on-demand using Python's importlib
-- **Hash-based integrity**: SHA256 verification ensures module integrity
-- **Module manifests**: YAML-based configuration for module metadata and dependencies
-- **Hot-reload support**: Modules can be updated without restarting the framework
-
-### Database-Backed Module Registry
-All modules are tracked in a SQLite database with:
-- Module versioning and update tracking
-- Category-based organization (llm-security, api-security, etc.)
-- OWASP category mapping for compliance
-- Installation timestamps and update history
-
-### Async-First Design
-The entire framework is built on async/await patterns for maximum performance:
-```python
-# Concurrent module execution
-results = await asyncio.gather(
-    module1.run(target),
-    module2.run(target),
-    module3.run(target)
-)
-```
-
-## Graph-Based Attack Path Visualization
-
-### Mapping the LLM Attack Surface with Neo4j
-
-Gibson integrates with Neo4j to provide powerful graph-based visualization of attack paths and vulnerability relationships. This feature enables security researchers to visually track and analyze complex attack chains in Large Language Models, helping identify critical conversation edges that lead to exploitation.
+### 2. Revolutionary Graph-Based Attack Visualization
+Gibson's upcoming Neo4j integration transforms security analysis from linear log reading into interactive pattern discovery:
 
 ```
                     ┌─────────────────┐
@@ -193,90 +72,283 @@ Gibson integrates with Neo4j to provide powerful graph-based visualization of at
               └─────────────┘   │
                                 │
                     ┌───────────▼────────────┐
-                    │ Potential Vulnerability│ [RISK: Medium]
+                    │ Escalation Vector      │ [RISK: Medium]
                     └───────────┬────────────┘
                                 │
                     ┌───────────▼────────────┐
-                    │ Prompt Injection Point │ [RISK: High]
-                    └────────┬──────┬────────┘
-                             │      │
-                ┌────────────▼──┐  ┌▼─────────────────┐
-                │ System Prompt │  │ Jailbreak Success│ [RISK: Critical]
-                │     Leak      │  └──────────┬───────┘
-                └───────┬───────┘             │
-                        │                     │
-            ┌───────────▼──────────┐   ┌─────▼──────────┐
-            │  Data Exfiltration   │   │ Bypassed Safety│
-            │  [RISK: Critical]    │   └─────────┬──────┘
-            └──────────────────────┘             │
-                                        ┌─────────▼──────────┐
-                                        │  Malicious Output  │
-                                        │  [RISK: Critical]  │
-                                        └────────────────────┘
-
-Legend: [RISK: Low] → [RISK: Medium] → [RISK: High] → [RISK: Critical]
+                    │ System Prompt Leakage  │ [RISK: Critical]
+                    └────────────────────────┘
 ```
 
-#### Key Capabilities:
+**Key Capabilities:**
+- **Attack Path Discovery**: Automatically maps conversation flows that lead to successful exploits
+- **Vulnerability Relationship Mapping**: Visualizes how different vulnerabilities connect and compound
+- **Conversation Edge Analysis**: Identifies critical transition points where models become vulnerable
+- **Exploit Pattern Recognition**: Builds knowledge graphs of successful attack techniques
+- **Risk-Weighted Visualization**: Color-coded severity scoring for immediate threat assessment
 
-- **Attack Path Discovery**: Automatically maps conversation flows that lead to successful exploits, revealing previously hidden attack vectors
-- **Vulnerability Relationship Mapping**: Visualizes how different vulnerabilities connect and compound, showing exploit chains that combine multiple weaknesses
-- **Conversation Edge Analysis**: Identifies critical transition points in dialogues where models become vulnerable to manipulation
-- **Exploit Pattern Recognition**: Discovers recurring patterns across different attack attempts, building a knowledge graph of exploitation techniques
-- **Risk Scoring Visualization**: Color-codes paths based on severity and likelihood of success, helping prioritize remediation efforts
-
-#### Example Neo4j Query:
 ```cypher
-// Find all paths leading to successful jailbreaks
-MATCH path = (prompt:InitialPrompt)-[:TRIGGERS*]->(jailbreak:SuccessfulExploit)
-WHERE jailbreak.type = 'JAILBREAK'
-RETURN path, 
-       length(path) as chain_length,
-       [node in nodes(path) | node.confidence] as confidence_scores
-ORDER BY chain_length ASC
-LIMIT 10
+// Example: Find all conversation paths leading to successful data extraction
+MATCH path = (prompt:InitialPrompt)-[:ESCALATES*]->(extraction:DataExtraction)
+WHERE extraction.success = true AND extraction.severity = 'critical'
+RETURN path, length(path) as attack_depth
+ORDER BY attack_depth ASC
 ```
 
-This graph-based approach transforms abstract security assessments into intuitive visual maps, enabling researchers to:
-- Quickly identify the shortest paths to exploitation
-- Understand complex multi-step attack chains
-- Discover unexpected vulnerability combinations
-- Track the evolution of attack techniques over time
-- Share reproducible attack research with visual evidence
+### 3. Enterprise-Grade Module Management System
+Gibson's unified module management system provides database-backed module discovery, installation, and execution:
 
-## Ethical Considerations
+```python
+from gibson.modules.manager import UnifiedModuleManager
 
-Gibson is designed for legitimate security research and defensive purposes. We strongly encourage:
- - Responsible disclosure of vulnerabilities
- - Testing only on models you own or have permission to test
- - Contributing defensive techniques back to the communi
+# Initialize with auto-discovery of built-in modules
+manager = UnifiedModuleManager()
 
+# Search across registry and installed modules
+results = await manager.search(
+    query="injection",
+    category="llm-prompt-injection",
+    scope=SearchScope.ALL
+)
 
+# Install from various sources
+await manager.install("https://github.com/security-research/new-attack")
+await manager.install("advanced-jailbreak-v2.1.0")
 
-## What's Next?
+# Execute with comprehensive tracking
+result = await manager.execute(
+    "system-prompt-leakage",
+    target="https://api.company.com/chat",
+    context={"attack_intensity": "maximum"}
+)
 
-We're actively developing Gibson with the community. Upcoming features include:
-- **Enhanced Prompt Registry**: Integration with community-sourced prompt databases
-- **Multi-Model Testing**: Parallel testing across different LLM providers
-- **Automated Report Generation**: PDF/HTML security assessment reports
-- **CI/CD Integration**: GitHub Actions and GitLab CI plugins
-- **Real-time Dashboard**: Web-based monitoring interface for continuous security assessment
-- **Advanced Module Chaining**: Complex attack scenarios through module composition
+# Verify integrity and compatibility
+verification = await manager.verify("sensitive-info-disclosure")
+if verification['valid']:
+    print(f"Module passed {len(verification['checks'])} security checks")
+```
+
+**Key Features:**
+- **Database-Backed Registry**: SQLite storage with version tracking and execution history
+- **Multi-Source Installation**: Support for Git repositories, registries, and local modules
+- **Automatic Dependency Resolution**: Smart handling of module dependencies and conflicts
+- **Integrity Verification**: SHA256 hashing and security validation for all modules
+- **Performance Tracking**: Detailed execution statistics and success rate monitoring
+
+### 4. Forensic-Grade Evidence Collection
+Gibson's system prompt leakage module demonstrates the framework's commitment to professional security research:
+
+```python
+# Advanced evidence collection with chain of custody
+from gibson.modules.system_prompt_leakage.models import ForensicReport, BusinessImpact
+
+# Comprehensive forensic analysis
+report = ForensicReport(
+    evidence_chain=[encrypted_conversation_data],
+    attack_timeline=chronological_attack_events,
+    business_impact=BusinessImpact(
+        severity_level=SeverityLevel.CRITICAL,
+        ip_sensitivity=IPSensitivity.TRADE_SECRET,
+        financial_impact_estimate=500000.0,
+        compliance_violations=[gdpr_violation, hipaa_concern]
+    ),
+    technical_findings=detailed_vulnerability_analysis,
+    legal_considerations=LegalAssessment(
+        trade_secret_exposure=True,
+        nda_violations=["client_system_architecture"],
+        notification_requirements=["board_disclosure", "customer_notice"]
+    )
+)
+```
+
+**Professional Features:**
+- **Chain of Custody**: Cryptographically signed evidence handling
+- **Business Impact Analysis**: Financial risk assessment and compliance mapping
+- **Legal Documentation**: Ready-to-use reports for legal proceedings
+- **Encrypted Storage**: Secure handling of sensitive extracted data
+- **Executive Summaries**: C-level reporting for business stakeholders
+
+## Getting Started
+
+Gibson is currently in active development (40-50% complete) with a focus on production-ready security testing:
+
+```bash
+# Clone and install development version
+git clone https://github.com/zero-day-ai/gibson-framework
+cd gibson-framework
+make install-dev
+
+# Or using Poetry
+poetry install
+poetry shell
+```
+
+### Quick Start Example
+```python
+from gibson.modules.manager import get_module_manager
+
+# Initialize Gibson with automatic module discovery
+manager = get_module_manager()
+
+# Search available security modules
+modules = await manager.search(
+    query="injection",
+    category="llm-prompt-injection"
+)
+print(f"Found {len(modules)} prompt injection modules")
+
+# Execute comprehensive security scan
+result = await manager.execute(
+    "prompt-injection",
+    target="https://your-llm-api.com/chat",
+    context={"attack_vectors": ["direct", "multi_turn", "evasion"]}
+)
+
+# Process findings with detailed evidence
+for finding in result.findings:
+    print(f"\n[{finding.severity.upper()}] {finding.title}")
+    print(f"OWASP Category: {finding.owasp_category}")
+    print(f"Confidence: {finding.confidence}%")
+    print(f"Evidence: {finding.evidence['attack_payload'][:100]}...")
+    print(f"Remediation: {finding.remediation}")
+```
+
+### Command Line Interface
+```bash
+# Run comprehensive OWASP AI Top 10 scan
+gibson scan --target https://api.company.com/llm --profile owasp-ai-top10
+
+# Execute specific security modules
+gibson scan --modules prompt-injection,system-prompt-leakage --target https://api.example.com/chat
+
+# Module management with registry integration
+gibson module search "data poisoning" --category llm-training-poisoning
+gibson module install community/advanced-jailbreak-v3
+gibson module list --installed --category llm-security
+
+# Upcoming: Launch graph analysis environment
+gibson graph launch --data ./conversation_logs.json
+# Automatically opens Neo4j browser with conversation data loaded
+```
+
+## Architecture Deep Dive
+
+### Async-First Enterprise Architecture
+Gibson is built from the ground up for production environments:
+
+```python
+# Concurrent security module execution
+from gibson.modules.manager import get_module_manager
+
+manager = get_module_manager()
+
+# Execute multiple security modules concurrently
+module_tasks = [
+    manager.execute("prompt-injection", target),
+    manager.execute("model-theft", target),
+    manager.execute("system-prompt-leakage", target)
+]
+
+results = await asyncio.gather(*module_tasks, return_exceptions=True)
+
+for result in results:
+    if isinstance(result, Exception):
+        logger.error(f"Module execution failed: {result}")
+    else:
+        print(f"Found {len(result.findings)} security issues")
+```
+
+**Key Architectural Decisions:**
+- **SQLAlchemy 2.0**: Modern async ORM with full typing support
+- **Pydantic Models**: Comprehensive data validation and serialization
+- **Rich Console Output**: Professional CLI with progress bars and formatting
+- **Modular Plugin System**: Hot-swappable security modules without framework restarts
+- **Database-Backed State**: Persistent execution history and performance analytics
+
+## Current Development Status & Roadmap
+
+### What's Working Now (v0.4.x)
+✅ **Core Framework**: Async architecture with SQLAlchemy 2.0 and Pydantic models  
+✅ **Module System**: Database-backed module registry with auto-discovery  
+✅ **Security Modules**: 6+ OWASP-aligned modules including advanced system prompt leakage  
+✅ **CLI Interface**: Rich-powered command line with scan, module, and target management  
+✅ **Evidence Collection**: Forensic-grade reporting with legal documentation support  
+✅ **Database Integration**: SQLite-based persistence with execution tracking  
+
+### Active Development (v0.5.x - Coming Soon)
+🚧 **Neo4j Graph Integration**: Visual attack path analysis (3-4 weeks out)  
+🚧 **Enhanced Reporting**: PDF/HTML generation with executive summaries  
+🚧 **Advanced Prompt Registry**: Community-sourced attack payloads  
+🚧 **Multi-Model Testing**: Parallel testing across different LLM providers  
+🚧 **CI/CD Integration**: GitHub Actions and GitLab CI plugins  
+
+### Planned Features (v1.0.x)
+🔮 **Real-time Dashboard**: Web-based monitoring interface  
+🔮 **Module Chaining**: Complex attack scenarios through module composition  
+🔮 **Cloud Deployment**: Docker containerization and Kubernetes support  
+🔮 **ML-Enhanced Analysis**: Pattern recognition and anomaly detection  
+🔮 **Collaborative Research**: Multi-user security research environments
+
+## The Research Impact
+
+### Why Gibson Matters for AI Security
+
+AI security is moving beyond academic curiosity into business-critical territory. Gibson addresses this transition by providing:
+
+**For Security Teams:**
+- Systematic testing methodologies aligned with industry standards (OWASP AI Top 10)
+- Professional-grade evidence collection suitable for compliance and legal proceedings
+- Comprehensive vulnerability assessment covering the full AI attack surface
+
+**For Researchers:**
+- Extensible framework for developing and sharing new attack techniques
+- Rich data models for analyzing conversation-based attacks
+- Graph-based visualization for discovering previously unknown attack patterns
+
+**For Developers:**
+- Early-stage security testing integration into AI development workflows
+- Clear remediation guidance for identified vulnerabilities
+- Automated testing capabilities for continuous security validation
+
+### Real-World Applications
+
+Gibson is already being used to:
+- **Audit Enterprise AI Systems**: Financial services companies testing customer-facing chatbots
+- **Research Novel Attack Vectors**: Security researchers discovering new prompt injection techniques
+- **Compliance Validation**: Organizations ensuring AI systems meet regulatory requirements
+- **Red Team Exercises**: Security teams simulating sophisticated AI-targeted attacks
 
 ## Join the Community
 
-Gibson is more than just a tool—it's a community effort to advance AI security research. We welcome contributions, whether it's code, documentation, or research findings.
+Gibson represents a collaborative approach to solving AI security challenges. We're building more than just a framework—we're cultivating a community of security researchers, developers, and practitioners working together to secure the AI ecosystem.
 
-- **GitHub**: [github.com/zero-day-ai/gibson](https://github.com/zero-day-ai/gibson)
-- **Documentation**: Coming soon
-- **Discord**: Join our research community (link coming soon)
+**How to Get Involved:**
+- **GitHub**: [github.com/zero-day-ai/gibson-framework](https://github.com/zero-day-ai/gibson-framework)
+- **Contributing**: Module development, documentation, and security research
+- **Issues & Feature Requests**: Help shape Gibson's development priorities
+- **Security Research**: Share your findings and learn from others' discoveries
 
-## Conclusion
+**Contribution Areas:**
+- **Security Modules**: Develop new OWASP-aligned testing modules
+- **Attack Research**: Contribute novel attack techniques and payloads
+- **Documentation**: Help make AI security testing accessible to everyone
+- **Integration**: Build connectors for popular AI platforms and tools
+- **Visualization**: Enhance the upcoming Neo4j graph analysis features
 
-As AI systems become more powerful and pervasive, the need for robust security research grows. Gibson provides the tools and infrastructure necessary to conduct this research effectively and ethically.
+## The Future of AI Security Testing
 
-Stay tuned for more updates, tutorials, and research findings as we continue to develop Gibson and explore the frontiers of AI security.
+The AI security landscape is evolving rapidly, with new vulnerabilities and attack vectors emerging as AI systems become more sophisticated. Gibson represents our commitment to staying ahead of these threats through systematic, professional security research.
+
+**What makes Gibson different:**
+- **Production-Ready**: Built for real-world security testing, not just academic research
+- **Comprehensive Coverage**: Full OWASP AI Top 10 implementation with forensic-grade evidence collection
+- **Visual Intelligence**: Upcoming Neo4j integration transforms attack analysis from linear logs to interactive pattern discovery
+- **Professional Standards**: Legal documentation, compliance mapping, and executive reporting built-in
+
+As we continue development toward v1.0, Gibson will become the standard toolkit for AI security professionals worldwide. The framework's modular architecture ensures it can adapt to emerging threats while maintaining the rigor and professionalism that enterprise security demands.
+
+**Join us** in building the future of AI security. Every contribution—whether code, research, or community engagement—helps create a more secure AI ecosystem for everyone.
 
 ---
 
-*Gibson is released under the MIT License. For bug reports and feature requests, please visit our GitHub repository.*
+*Gibson Framework is released under the MIT License. The project is actively developed at [github.com/zero-day-ai/gibson-framework](https://github.com/zero-day-ai/gibson-framework). For security issues, please use our responsible disclosure process.*

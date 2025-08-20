@@ -36,5 +36,19 @@
       <guid>https://www.zero-day.ai/tags/gibson/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Llm-Security</title>
+      <link>https://www.zero-day.ai/tags/llm-security/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://www.zero-day.ai/tags/llm-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Owasp</title>
+      <link>https://www.zero-day.ai/tags/owasp/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://www.zero-day.ai/tags/owasp/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
