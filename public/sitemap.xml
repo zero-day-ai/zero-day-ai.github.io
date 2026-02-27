@@ -2,43 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.zero-day.ai/tags/ai-security/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>https://www.zero-day.ai/tags/announcement/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/partner/</loc>
   </url><url>
-    <loc>https://www.zero-day.ai/blog/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/</loc>
   </url><url>
-    <loc>https://www.zero-day.ai/categories/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.zero-day.ai/tags/framework/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.zero-day.ai/tags/gibson/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.zero-day.ai/blog/introducing-gibson/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.zero-day.ai/tags/llm-security/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.zero-day.ai/tags/owasp/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.zero-day.ai/categories/research/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.zero-day.ai/tags/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.zero-day.ai/categories/tools/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.zero-day.ai/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/</loc>
   </url>
 </urlset>

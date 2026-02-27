@@ -2,10 +2,15 @@ baseURL = 'https://www.zero-day.ai/'
 languageCode = 'en-us'
 title = 'zero-day.ai'
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [params]
-    subtitle = 'AI Security Research & Open Source Tools'
-    description = "Cutting-edge AI security research and open source tools. Home of Gibson - the AI model hacking framework. Exploring vulnerabilities, defenses, and the future of AI security."
-    keywords = "AI Security, Machine Learning, Security Research, AI Vulnerabilities, Gibson Framework, Model Attacks, Adversarial ML, AI Red Team, Security Tools, Open Source Security, AI Hacking, Model Security, zero-day, AI Exploits"
+    subtitle = 'K8s-Native Autonomous Agent Platform'
+    description = "Gibson is a K8s-native autonomous agent platform that deploys inside your infrastructure. Continuous pentesting, compliance automation, and infrastructure intelligence - on your cluster, behind your firewall."
+    keywords = "Kubernetes Security, Autonomous Agents, K8s Pentesting, Compliance Automation, DevSecOps, AI Agents, Infrastructure Security, Continuous Security Testing, SOC 2 Automation, FedRAMP, Air-Gapped Security, HIPAA Compliance, Security Platform"
     gibsonLogo = ""
     twitterURL = ""
     twitterText = ""
@@ -22,7 +27,7 @@ title = 'zero-day.ai'
     unfurlLogo = "/gibson-logo.png"
     unfurlCreator = ""
     unfurlSite = "https://zero-day.ai"
-    unfurlTitle = "zero-day.ai | AI Security Research & Gibson Framework"
+    unfurlTitle = "zero-day.ai | K8s-Native Autonomous Agent Platform"
 
 [params.logo]
     logoUser = "gibson"
@@ -39,14 +44,14 @@ title = 'zero-day.ai'
         url = "/"
         weight = 1
     [[menu.main]]
+        identifier = "partner"
+        name = "partner"
+        url = "/partner"
+        weight = 2
+    [[menu.main]]
         identifier = "blog"
         name = "blog"
         url = "/blog"
-        weight = 2
-    [[menu.main]]
-        identifier = "research"
-        name = "research"
-        url = "/research"
         weight = 3
     [[menu.main]]
         identifier = "github"

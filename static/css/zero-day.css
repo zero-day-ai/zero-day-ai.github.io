@@ -273,3 +273,327 @@ main p, article p, .content p {
 .gibson-logo:hover {
     filter: drop-shadow(0 0 15px var(--highlight-color));
 }
+
+/* =============================================
+   Homepage Hero & Platform Sections
+   ============================================= */
+
+.home-hero {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hero-tagline {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    color: var(--main-text-color);
+}
+
+/* Video Section */
+.video-section {
+    margin: 40px 0;
+}
+
+.video-placeholder {
+    background: var(--code-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    aspect-ratio: 16 / 9;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, transparent 50%, rgba(0, 255, 170, 0.05) 100%);
+}
+
+.video-coming-soon {
+    text-align: center;
+    z-index: 1;
+}
+
+.video-coming-soon .play-icon {
+    font-size: 4em;
+    color: var(--link-color);
+    display: block;
+    margin-bottom: 15px;
+    opacity: 0.6;
+}
+
+.video-coming-soon p {
+    color: var(--alt-color);
+    font-size: 1.1em;
+    margin: 0;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    margin: 40px 0;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button-primary {
+    background-color: var(--highlight-color);
+    color: var(--main-bg-color);
+    border-color: var(--highlight-color);
+    font-weight: bold;
+}
+
+.button-primary:hover {
+    background-color: var(--alt-color);
+    border-color: var(--alt-color);
+    color: var(--main-bg-color);
+}
+
+.button-large {
+    padding: 15px 30px;
+    font-size: 1.1em;
+}
+
+/* Use Cases Section */
+.use-cases {
+    margin: 60px 0;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-color);
+}
+
+.use-cases h2 {
+    margin-bottom: 30px;
+}
+
+.use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    text-align: left;
+}
+
+.use-case-card {
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.use-case-card:hover {
+    border-color: var(--link-color);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+}
+
+.use-case-card h3 {
+    color: var(--link-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.use-case-card p {
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.7;
+}
+
+/* Differentiator Section */
+.differentiator {
+    margin: 60px 0;
+    padding: 40px;
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.differentiator h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.differentiator > p {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.diff-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.diff-list li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.diff-list .check {
+    color: var(--highlight-color);
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Services Section */
+.services-section {
+    margin: 60px 0;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-color);
+}
+
+.services-section h2 {
+    margin-bottom: 30px;
+}
+
+.service-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    text-align: left;
+}
+
+.service-card {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 20px rgba(0, 255, 170, 0.1);
+}
+
+.service-card h3 {
+    color: var(--highlight-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.service-card p {
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.7;
+}
+
+/* Final CTA */
+.final-cta {
+    margin: 60px 0 20px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-color);
+}
+
+.final-cta p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: var(--alt-color);
+}
+
+/* Partner Page Styles */
+.partner-page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.partner-intro {
+    font-size: 1.15em;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.partner-section {
+    margin: 50px 0;
+    padding: 30px;
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.partner-section h2 {
+    margin-top: 0;
+    color: var(--link-color);
+}
+
+.partner-benefits {
+    list-style: none;
+    padding: 0;
+}
+
+.partner-benefits li {
+    padding: 12px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.partner-benefits li:last-child {
+    border-bottom: none;
+}
+
+.partner-benefits .check {
+    color: var(--highlight-color);
+    font-size: 1.2em;
+    flex-shrink: 0;
+}
+
+.partner-cta {
+    text-align: center;
+    margin-top: 50px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(0, 255, 170, 0.05) 0%, rgba(0, 217, 255, 0.05) 100%);
+    border: 1px solid var(--highlight-color);
+    border-radius: 8px;
+}
+
+.partner-cta h2 {
+    margin-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-tagline {
+        font-size: 1em;
+    }
+
+    .use-case-grid,
+    .service-options {
+        grid-template-columns: 1fr;
+    }
+
+    .differentiator {
+        padding: 25px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-buttons .button {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}

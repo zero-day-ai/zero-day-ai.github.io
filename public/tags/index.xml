@@ -2,53 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on zero-day.ai</title>
-    <link>https://www.zero-day.ai/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on zero-day.ai</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://www.zero-day.ai/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Ai-Security</title>
-      <link>https://www.zero-day.ai/tags/ai-security/</link>
-      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://www.zero-day.ai/tags/ai-security/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Announcement</title>
-      <link>https://www.zero-day.ai/tags/announcement/</link>
-      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://www.zero-day.ai/tags/announcement/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Framework</title>
-      <link>https://www.zero-day.ai/tags/framework/</link>
-      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://www.zero-day.ai/tags/framework/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Gibson</title>
-      <link>https://www.zero-day.ai/tags/gibson/</link>
-      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://www.zero-day.ai/tags/gibson/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Llm-Security</title>
-      <link>https://www.zero-day.ai/tags/llm-security/</link>
-      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://www.zero-day.ai/tags/llm-security/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Owasp</title>
-      <link>https://www.zero-day.ai/tags/owasp/</link>
-      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://www.zero-day.ai/tags/owasp/</guid>
-      <description></description>
-    </item>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
