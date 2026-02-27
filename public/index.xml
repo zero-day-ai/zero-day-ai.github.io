@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>zero-day.ai</title>
-    <link>http://localhost:1313/</link>
+    <link>https://www.zero-day.ai/</link>
     <description>Recent content on zero-day.ai</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.zero-day.ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Partner With Us</title>
-      <link>http://localhost:1313/partner/</link>
+      <link>https://www.zero-day.ai/partner/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/partner/</guid>
+      <guid>https://www.zero-day.ai/partner/</guid>
       <description>&lt;div class=&#34;partner-page&#34;&gt;&#xA;&lt;h1 id=&#34;partner-with-us&#34;&gt;Partner With Us&lt;/h1&gt;&#xA;&lt;p class=&#34;partner-intro&#34;&gt;&#xA;Consulting firms and MSSPs: Add a differentiated capability your competitors don&#39;t have. Gibson deploys &lt;strong&gt;inside&lt;/strong&gt; client infrastructure, enabling services that cloud-hosted tools simply cannot deliver.&#xA;&lt;/p&gt;&#xA;&lt;div class=&#34;partner-section&#34;&gt;&#xA;&lt;h2 id=&#34;the-problem-you-solve&#34;&gt;The Problem You Solve&lt;/h2&gt;&#xA;&lt;p&gt;Every DevSecOps firm sells the same services with the same tools. Your clients need continuous security testing, but your competitors offer the exact same capabilities. Gibson changes that equation.&lt;/p&gt;&#xA;&lt;p&gt;With Gibson, you can offer autonomous agent capabilities that run on your client&amp;rsquo;s cluster, behind their firewall, in air-gapped and classified environments. No other tool on the market does this.&lt;/p&gt;</description>
     </item>
   </channel>
