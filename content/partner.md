@@ -68,7 +68,7 @@ Your margin on a capability you don't have to build or maintain.
 
 Schedule a call to see Gibson in action and discuss how we can work together.
 
-<a href="https://calendly.com/zero-day-ai/partner" class="button button-primary button-large">
+<a href="https://calendly.com/zero-day-ai" class="button button-primary button-large">
 Schedule Partner Call
 </a>
 

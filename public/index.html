@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="generator" content="Hugo 0.157.0">
+	<meta name="generator" content="Hugo 0.158.0">
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -125,11 +125,11 @@ gtag('config', '');
             <div class="content" id="content"><div class="home-hero">
 
     <h1>
-        K8s-Native Autonomous Agent Platform
+        Kubernetes for Security Testing
     </h1>
 
     <p class="hero-tagline">
-        AI agents that do the work your team doesn't have time for. Security testing. Compliance monitoring. Infrastructure assessment. <strong>Deployed inside your cluster, behind your firewall.</strong>
+        Gibson is an autonomous agent orchestration platform. You write agents in Go, they reason with LLMs, execute tools, and accumulate knowledge in a graph database. <strong>The whole thing runs on your cluster, not ours.</strong>
     </p>
 
     
@@ -154,35 +154,54 @@ gtag('config', '');
 
     
     <div class="use-cases">
-        <h2>What Gibson Does</h2>
+        <h2>How It Works</h2>
         <div class="use-case-grid">
             <div class="use-case-card">
-                <h3>Continuous Pentesting</h3>
-                <p>Autonomous security testing integrated into your CI/CD pipeline. Find vulnerabilities continuously, not once a year.</p>
+                <h3>Agents That Reason</h3>
+                <p>Not scripts with if statements. Agents run an Observe-Think-Act loop, query knowledge graphs, and decide what to do next. Claude, GPT, Gemini, or local models via Ollama.</p>
             </div>
             <div class="use-case-card">
-                <h3>Compliance Automation</h3>
-                <p>Automated evidence collection for SOC 2, PCI-DSS, HIPAA, and FedRAMP. Continuous audit readiness without the manual work.</p>
+                <h3>Tools Via Redis Queues</h3>
+                <p>Agents dispatch work to tool pods. kubectl, curl, terraform, nuclei, whatever you need. Type-safe Protocol Buffer I/O. Horizontal scaling via HPA.</p>
             </div>
             <div class="use-case-card">
-                <h3>Infrastructure Intelligence</h3>
-                <p>API discovery, architecture documentation, and drift monitoring. Know what's running in your environment at all times.</p>
+                <h3>GraphRAG Knowledge</h3>
+                <p>Neo4j stores everything agents learn: hosts, services, vulns, credentials, attack paths. Knowledge persists across missions. Agents get smarter over time.</p>
             </div>
         </div>
     </div>
 
     
     <div class="differentiator">
-        <h2>Why Gibson?</h2>
+        <h2>Why This Matters</h2>
         <p>
-            Every competitor runs from their cloud and tests externally. <strong>Gibson runs inside your infrastructure</strong> &mdash; on your cluster, behind your firewall, in air-gapped and classified environments.
+            SaaS security tools can't touch your internal network. They can't see what's behind your firewall. They definitely can't run in your air-gapped environment. <strong>Gibson deploys where your infrastructure actually lives.</strong>
         </p>
         <ul class="diff-list">
-            <li><span class="check">&#10003;</span> Deploys to any K8s cluster: EKS, GKE, AKS, k3s, air-gapped</li>
-            <li><span class="check">&#10003;</span> Data never leaves your network</li>
-            <li><span class="check">&#10003;</span> Custom agents built in hours, not months</li>
-            <li><span class="check">&#10003;</span> FedRAMP, ITAR, HIPAA, NYDFS compliant deployments</li>
+            <li><span class="check">&#10003;</span> Runs on any K8s: EKS, GKE, AKS, k3s, OpenShift, air-gapped clusters</li>
+            <li><span class="check">&#10003;</span> Your data stays in your network. Period.</li>
+            <li><span class="check">&#10003;</span> Build agents with the Go SDK. Ship them as containers.</li>
+            <li><span class="check">&#10003;</span> Full observability: OpenTelemetry, Langfuse, Prometheus</li>
         </ul>
+    </div>
+
+    
+    <div class="use-cases">
+        <h2>What People Build</h2>
+        <div class="use-case-grid">
+            <div class="use-case-card">
+                <h3>Security Testing</h3>
+                <p>Continuous pentesting agents that find vulns, chain exploits, and write findings with full provenance. Runs in CI/CD or on a schedule.</p>
+            </div>
+            <div class="use-case-card">
+                <h3>LLM Red-Teaming</h3>
+                <p>Prompt injection, jailbreaks, data extraction. Built-in payload management with encoding transforms. Test your AI before someone else does.</p>
+            </div>
+            <div class="use-case-card">
+                <h3>Infrastructure Ops</h3>
+                <p>Agents that troubleshoot K8s issues, analyze logs, respond to incidents. Delegate to sub-agents. Chain complex workflows.</p>
+            </div>
+        </div>
     </div>
 
     
@@ -191,22 +210,22 @@ gtag('config', '');
         <div class="service-options">
             <div class="service-card">
                 <h3>Platform Deployment</h3>
-                <p>We deploy Gibson on your Kubernetes cluster, integrate with your CI/CD, build custom mission profiles, and deliver ongoing findings.</p>
+                <p>We deploy Gibson on your cluster, integrate it with your stack, build mission profiles, and run ongoing operations. You get findings, not invoices for hours.</p>
             </div>
             <div class="service-card">
-                <h3>Consulting &amp; Custom Agents</h3>
-                <p>Need something specific? We build purpose-built agents for your use case &mdash; compliance monitoring, API discovery, infrastructure assessment, and more.</p>
+                <h3>Custom Agent Dev</h3>
+                <p>Got a weird use case? Good. We build agents for things that don't fit in a checkbox: compliance evidence collection, API discovery, threat hunting, whatever.</p>
             </div>
             <div class="service-card">
                 <h3>Partner Program</h3>
-                <p>Consulting firms and MSSPs: Add autonomous AI capabilities to your service offerings. <a href="/partner">Learn more &rarr;</a></p>
+                <p>MSSPs and consultancies: white-label Gibson for your clients. You sell it, we operate it. <a href="/partner">Details &rarr;</a></p>
             </div>
         </div>
     </div>
 
     
     <div class="final-cta">
-        <p>Ready to see Gibson in action?</p>
+        <p>Want to see it run?</p>
         <a href="https://calendly.com/zero-day-ai" class="button button-primary button-large">
             Schedule a Demo
         </a>

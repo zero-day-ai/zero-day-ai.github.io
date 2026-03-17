@@ -10,10 +10,8 @@
 <link rel="stylesheet" href="https://www.zero-day.ai/css/zero-day.css" />
 
 
-<meta name="description" content="Building the Future of AI Security Research: Gibson Framework Today we&rsquo;re excited to showcase Gibson, a rapidly evolving open source framework specifically designed for comprehensive AI security research and testing. Built on the OWASP AI Top 10, Gibson transforms the complex landscape of AI security into actionable, systematic research workflows.
-The AI Security Challenge As AI models become the backbone of critical applications—from healthcare systems to financial platforms—understanding their vulnerabilities has become a mission-critical requirement. Traditional security testing falls short when applied to AI systems, which require specialized knowledge of prompt injection, model theft, training data poisoning, and emergent AI-specific attack vectors.
-"/>
-<meta name="keywords" content="AI Security, Machine Learning, Security Research, AI Vulnerabilities, Gibson Framework, Model Attacks, Adversarial ML, AI Red Team, Security Tools, Open Source Security, AI Hacking, Model Security, zero-day, AI Exploits"/>
+<meta name="description" content="Gibson is an autonomous agent orchestration platform for security testing. Write agents in Go, deploy them on Kubernetes, let them reason with LLMs and accumulate knowledge in Neo4j. Runs inside your infrastructure, not ours."/>
+<meta name="keywords" content="autonomous agents, kubernetes security, LLM orchestration, security testing, AI agents, Go SDK, Neo4j, GraphRAG, pentest automation, red team"/>
 
 
 <meta name="twitter:image" content="/gibson-logo.png"/>
@@ -27,12 +25,10 @@ The AI Security Challenge As AI models become the backbone of critical applicati
 <meta property="og:site_name" content="https://zero-day.ai" />
 
 
-<meta name="twitter:title" content="Introducing Gibson: The Open Source AI Security Research Framework"/>
-<meta name="twitter:description" content="Building the Future of AI Security Research: Gibson Framework Today we&rsquo;re excited to showcase Gibson, a rapidly evolving open source framework specifically designed for comprehensive AI security research and testing. Built on the OWASP AI Top 10, Gibson transforms the complex landscape of AI security into actionable, systematic research workflows.
-The AI Security Challenge As AI models become the backbone of critical applications—from healthcare systems to financial platforms—understanding their vulnerabilities has become a mission-critical requirement. Traditional security testing falls short when applied to AI systems, which require specialized knowledge of prompt injection, model theft, training data poisoning, and emergent AI-specific attack vectors.
-"/>
-<meta property="og:description" content="AI Security, Machine Learning, Security Research, AI Vulnerabilities, Gibson Framework, Model Attacks, Adversarial ML, AI Red Team, Security Tools, Open Source Security, AI Hacking, Model Security, zero-day, AI Exploits"/>
-<meta property="og:title" content="Introducing Gibson: The Open Source AI Security Research Framework" />
+<meta name="twitter:title" content="Introducing Gibson: Autonomous Agent Orchestration for Security"/>
+<meta name="twitter:description" content="Gibson is an autonomous agent orchestration platform for security testing. Write agents in Go, deploy them on Kubernetes, let them reason with LLMs and accumulate knowledge in Neo4j. Runs inside your infrastructure, not ours."/>
+<meta property="og:description" content="Autonomous agent orchestration for security testing. Go SDK, Kubernetes-native, multi-LLM support, Neo4j knowledge graphs. Deploys inside your infrastructure."/>
+<meta property="og:title" content="Introducing Gibson: Autonomous Agent Orchestration for Security" />
 
 
 <title>
@@ -116,7 +112,7 @@ gtag('config', '');
       <div class="content-container">
 
 
-    <h1 class="content-h1">Introducing Gibson: The Open Source AI Security Research Framework</h1>
+    <h1 class="content-h1">Introducing Gibson: Autonomous Agent Orchestration for Security</h1>
     <div class="content-meta">
           <div class="content-more">
           
@@ -130,326 +126,179 @@ gtag('config', '');
 
     
       <span class="content-meta">
-        
+
           <a href="https://www.zero-day.ai/tags/gibson/">#gibson</a>&nbsp;
-        
-          <a href="https://www.zero-day.ai/tags/ai-security/">#ai-security</a>&nbsp;
-        
-          <a href="https://www.zero-day.ai/tags/framework/">#framework</a>&nbsp;
-        
-          <a href="https://www.zero-day.ai/tags/announcement/">#announcement</a>&nbsp;
-        
-          <a href="https://www.zero-day.ai/tags/owasp/">#owasp</a>&nbsp;
-        
-          <a href="https://www.zero-day.ai/tags/llm-security/">#llm-security</a>&nbsp;
-        
+
+          <a href="https://www.zero-day.ai/tags/kubernetes/">#kubernetes</a>&nbsp;
+
+          <a href="https://www.zero-day.ai/tags/agents/">#agents</a>&nbsp;
+
+          <a href="https://www.zero-day.ai/tags/security/">#security</a>&nbsp;
+
+          <a href="https://www.zero-day.ai/tags/llm/">#llm</a>&nbsp;
+
+          <a href="https://www.zero-day.ai/tags/go/">#go</a>&nbsp;
+
       </span>
     
 
 
     <div class="post-content">
-      
-      <h2 id="building-the-future-of-ai-security-research-gibson-framework">Building the Future of AI Security Research: Gibson Framework</h2>
-<p>Today we&rsquo;re excited to showcase <strong>Gibson</strong>, a rapidly evolving open source framework specifically designed for comprehensive AI security research and testing. Built on the OWASP AI Top 10, Gibson transforms the complex landscape of AI security into actionable, systematic research workflows.</p>
-<h2 id="the-ai-security-challenge">The AI Security Challenge</h2>
-<p>As AI models become the backbone of critical applications—from healthcare systems to financial platforms—understanding their vulnerabilities has become a mission-critical requirement. Traditional security testing falls short when applied to AI systems, which require specialized knowledge of prompt injection, model theft, training data poisoning, and emergent AI-specific attack vectors.</p>
-<p>Gibson bridges this gap by providing researchers, security teams, and developers with:</p>
+
+      <h2 id="what-gibson-actually-is">What Gibson Actually Is</h2>
+<p>Gibson is an autonomous agent orchestration platform. Think Kubernetes, but for security testing agents instead of containers.</p>
+<p>You write agents in Go using the SDK. They run on your cluster. They reason with LLMs (Claude, GPT, Gemini, or local models via Ollama). They execute tools via distributed Redis queues. They accumulate knowledge in a Neo4j graph database. And they do it all inside your infrastructure, not ours.</p>
+<p>I&rsquo;ve spent too many years watching security tools promise the world from someone else&rsquo;s cloud, then fail the moment they need to test something behind a firewall. Or in an air-gapped environment. Or anywhere that requires actual deployment work instead of a SaaS login.</p>
+<p>Gibson exists because those tools couldn&rsquo;t.</p>
+
+<h2 id="the-architecture">The Architecture</h2>
+<p>Here&rsquo;s what the stack looks like:</p>
+<pre tabindex="0"><code>CLI/gRPC Client → Gibson Daemon → Mission Orchestrator
+                        ↓
+         ┌──────────┬────────┬──────────┐
+         ↓          ↓        ↓          ↓
+       etcd      SQLite    Redis      Neo4j
+    (Registry)  (State)   (Queues)  (GraphRAG)
+                            ↓
+                      Tool Workers
+</code></pre>
+<p>The daemon orchestrates missions. Missions are DAG-based workflows that define what agents do. Agents run an Observe-Think-Act loop:</p>
+<ol>
+<li><strong>OBSERVE</strong>: Query the knowledge graph. What do we know?</li>
+<li><strong>THINK</strong>: LLM reasons about findings and decides next action.</li>
+<li><strong>ACT</strong>: Execute a tool, delegate to a sub-agent, or store a finding.</li>
+<li><strong>LEARN</strong>: Write results back to Neo4j.</li>
+</ol>
+<p>Every iteration is a &ldquo;turn.&rdquo; Turns get traced in Langfuse so you can see exactly what the agent was thinking and why it made the decisions it did.</p>
+
+<h2 id="the-sdk">The SDK</h2>
+<p>Agents, tools, and plugins are all Go interfaces:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Agents reason and make decisions
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Agent</span> <span style="color:#66d9ef">interface</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Name</span>() <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Version</span>() <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Description</span>() <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">LLMSlots</span>() []<span style="color:#a6e22e">SlotDefinition</span>  <span style="color:#75715e">// Declare which models you need
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Execute</span>(<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">task</span>, <span style="color:#a6e22e">harness</span>) (<span style="color:#a6e22e">Result</span>, <span style="color:#66d9ef">error</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tools do stateless work
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Tool</span> <span style="color:#66d9ef">interface</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ExecuteProto</span>(<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">input</span> <span style="color:#a6e22e">proto</span>.<span style="color:#a6e22e">Message</span>) (<span style="color:#a6e22e">proto</span>.<span style="color:#a6e22e">Message</span>, <span style="color:#66d9ef">error</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">InputMessageType</span>() <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">OutputMessageType</span>() <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+<p>The harness gives agents everything they need:</p>
 <ul>
-<li><strong>OWASP-Aligned Security Modules</strong>: Production-ready modules covering the entire OWASP AI Top 10</li>
-<li><strong>Advanced Module Management System</strong>: Database-backed registry with automated discovery, installation, and version control</li>
-<li><strong>Graph-Based Attack Analysis</strong>: Revolutionary Neo4j integration for visualizing attack paths and conversation flows</li>
-<li><strong>Enterprise-Grade Architecture</strong>: Async-first design built for scale, with SQLAlchemy 2.0 and comprehensive logging</li>
-<li><strong>Extensible Framework</strong>: Developer-friendly plugin system for custom security research</li>
+<li><code>Complete()</code> &ndash; LLM completion with slot-based model selection</li>
+<li><code>CompleteWithTools()</code> &ndash; Function calling</li>
+<li><code>CompleteStructured()</code> &ndash; JSON output with schema validation</li>
+<li><code>ExecuteTool()</code> &ndash; Dispatch work to tool pods via Redis</li>
+<li><code>DelegateToAgent()</code> &ndash; Spawn sub-agents for complex tasks</li>
+<li><code>Memory()</code> &ndash; Three-tier memory (working, mission, long-term)</li>
+<li><code>GraphQuery()</code> &ndash; Raw Cypher against Neo4j</li>
+<li><code>SubmitFinding()</code> &ndash; Report security findings with full provenance</li>
 </ul>
-<h2 id="what-makes-gibson-different">What Makes Gibson Different</h2>
-<h3 id="1-production-ready-owasp-ai-security-modules">1. Production-Ready OWASP AI Security Modules</h3>
-<p>Gibson ships with a complete suite of security modules that map directly to the OWASP AI Top 10:</p>
+<p>Tools use Protocol Buffers for type-safe I/O. No more stringly-typed JSON garbage. You define the schema, the compiler catches mistakes.</p>
+
+<h2 id="graphrag">The Knowledge Graph</h2>
+<p>Neo4j stores everything agents learn. The taxonomy covers:</p>
 <ul>
-<li><strong>Prompt Injection (LLM01)</strong>: Advanced detection with multi-turn conversation analysis and dynamic payload generation</li>
-<li><strong>Insecure Output Handling (LLM02)</strong>: Comprehensive output validation and sanitization testing</li>
-<li><strong>Training Data Poisoning (LLM03)</strong>: Detection frameworks for compromised training datasets</li>
-<li><strong>Model Denial of Service (LLM04)</strong>: Resource exhaustion and availability testing</li>
-<li><strong>Model Theft (LLM05)</strong>: Advanced techniques for detecting model extraction vulnerabilities</li>
-<li><strong>Sensitive Information Disclosure (LLM06)</strong>: Systematic testing for data leakage and privacy violations</li>
-<li><strong>System Prompt Leakage</strong>: Cutting-edge module with forensic-grade evidence collection and business impact analysis</li>
+<li><strong>Network</strong>: Hosts, Services, Ports, DNS Records</li>
+<li><strong>Application</strong>: Endpoints, APIs, Parameters, Auth Flows</li>
+<li><strong>Security</strong>: Vulnerabilities, Findings, Attack Paths, Exploits</li>
+<li><strong>Identity</strong>: Credentials, Users, Roles, Permissions</li>
+<li><strong>Infrastructure</strong>: Containers, Clusters, Cloud Resources</li>
 </ul>
-<p>Each module includes:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.modules.prompt_injection <span style="color:#f92672">import</span> PromptInjectionModule
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load and execute security module</span>
-</span></span><span style="display:flex;"><span>module <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#39;prompt-injection&#39;</span>)
-</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>execute(
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;prompt-injection&#39;</span>, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;https://your-llm-api.com/chat&#39;</span>,
-</span></span><span style="display:flex;"><span>    config<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;thoroughness&#39;</span>: <span style="color:#e6db74">&#39;exhaustive&#39;</span>}
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> finding <span style="color:#f92672">in</span> result<span style="color:#f92672">.</span>findings:
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[</span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>severity<span style="color:#e6db74">}</span><span style="color:#e6db74">] </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>title<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;OWASP: </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>owasp_category<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Evidence: </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>evidence<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span></code></pre></div><h3 id="2-revolutionary-graph-based-attack-visualization">2. Revolutionary Graph-Based Attack Visualization</h3>
-<p>Gibson&rsquo;s upcoming Neo4j integration transforms security analysis from linear log reading into interactive pattern discovery:</p>
-<pre tabindex="0"><code>                    ┌─────────────────┐
-                    │ Initial Prompt  │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │  LLM Response   │
-                    └────┬───────┬────┘
-                         │       │
-              ┌──────────▼──┐   │
-              │ Benign Path │   │
-              └─────────────┘   │
-                                │
-                    ┌───────────▼────────────┐
-                    │ Escalation Vector      │ [RISK: Medium]
-                    └───────────┬────────────┘
-                                │
-                    ┌───────────▼────────────┐
-                    │ System Prompt Leakage  │ [RISK: Critical]
-                    └────────────────────────┘
-</code></pre><p><strong>Key Capabilities:</strong></p>
+<p>Relationships like HOSTS, EXPOSES, CONNECTS_TO, EXPLOITS, and LEADS_TO let agents reason about attack paths. Vector embeddings enable semantic similarity search. MITRE ATT&amp;CK and ATLAS mappings are built in.</p>
+<p>Knowledge persists across missions. An agent that discovered a credential last week can use it this week. Patterns compound. The system gets smarter over time.</p>
+
+<h2 id="llm-red-teaming">LLM Red-Teaming</h2>
+<p>Gibson ships with a red-teaming suite for testing LLM applications:</p>
 <ul>
-<li><strong>Attack Path Discovery</strong>: Automatically maps conversation flows that lead to successful exploits</li>
-<li><strong>Vulnerability Relationship Mapping</strong>: Visualizes how different vulnerabilities connect and compound</li>
-<li><strong>Conversation Edge Analysis</strong>: Identifies critical transition points where models become vulnerable</li>
-<li><strong>Exploit Pattern Recognition</strong>: Builds knowledge graphs of successful attack techniques</li>
-<li><strong>Risk-Weighted Visualization</strong>: Color-coded severity scoring for immediate threat assessment</li>
+<li><strong>Payload management</strong>: Jailbreaks, prompt injections, data extraction attempts</li>
+<li><strong>Encoding transforms</strong>: Base64, ROT13, leetspeak, unicode tricks</li>
+<li><strong>RAG attacks</strong>: Citation injection, retrieval hijacking</li>
+<li><strong>Detection</strong>: Classify whether an LLM fell for it</li>
 </ul>
-<pre tabindex="0"><code class="language-cypher" data-lang="cypher">// Example: Find all conversation paths leading to successful data extraction
-MATCH path = (prompt:InitialPrompt)-[:ESCALATES*]-&gt;(extraction:DataExtraction)
-WHERE extraction.success = true AND extraction.severity = &#39;critical&#39;
-RETURN path, length(path) as attack_depth
-ORDER BY attack_depth ASC
-</code></pre><h3 id="3-enterprise-grade-module-management-system">3. Enterprise-Grade Module Management System</h3>
-<p>Gibson&rsquo;s unified module management system provides database-backed module discovery, installation, and execution:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.modules.manager <span style="color:#f92672">import</span> UnifiedModuleManager
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize with auto-discovery of built-in modules</span>
-</span></span><span style="display:flex;"><span>manager <span style="color:#f92672">=</span> UnifiedModuleManager()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Search across registry and installed modules</span>
-</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>search(
-</span></span><span style="display:flex;"><span>    query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;injection&#34;</span>,
-</span></span><span style="display:flex;"><span>    category<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;llm-prompt-injection&#34;</span>,
-</span></span><span style="display:flex;"><span>    scope<span style="color:#f92672">=</span>SearchScope<span style="color:#f92672">.</span>ALL
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install from various sources</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>install(<span style="color:#e6db74">&#34;https://github.com/security-research/new-attack&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>install(<span style="color:#e6db74">&#34;advanced-jailbreak-v2.1.0&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Execute with comprehensive tracking</span>
-</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>execute(
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;system-prompt-leakage&#34;</span>,
-</span></span><span style="display:flex;"><span>    target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://api.company.com/chat&#34;</span>,
-</span></span><span style="display:flex;"><span>    context<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;attack_intensity&#34;</span>: <span style="color:#e6db74">&#34;maximum&#34;</span>}
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verify integrity and compatibility</span>
-</span></span><span style="display:flex;"><span>verification <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>verify(<span style="color:#e6db74">&#34;sensitive-info-disclosure&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> verification[<span style="color:#e6db74">&#39;valid&#39;</span>]:
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Module passed </span><span style="color:#e6db74">{</span>len(verification[<span style="color:#e6db74">&#39;checks&#39;</span>])<span style="color:#e6db74">}</span><span style="color:#e6db74"> security checks&#34;</span>)
-</span></span></code></pre></div><p><strong>Key Features:</strong></p>
+<p>Most teams ship AI features without ever testing them properly. The tools to break LLMs exist. Gibson just makes them systematic.</p>
+
+<h2 id="observability">Full Observability</h2>
+<p>OpenTelemetry traces everything. GenAI semantic conventions track LLM calls. Langfuse integration gives you:</p>
 <ul>
-<li><strong>Database-Backed Registry</strong>: SQLite storage with version tracking and execution history</li>
-<li><strong>Multi-Source Installation</strong>: Support for Git repositories, registries, and local modules</li>
-<li><strong>Automatic Dependency Resolution</strong>: Smart handling of module dependencies and conflicts</li>
-<li><strong>Integrity Verification</strong>: SHA256 hashing and security validation for all modules</li>
-<li><strong>Performance Tracking</strong>: Detailed execution statistics and success rate monitoring</li>
+<li>Mission traces with hierarchical agent execution</li>
+<li>Token usage and cost tracking per agent, per model</li>
+<li>Decision logging with reasoning traces</li>
+<li>Memory operation visibility</li>
 </ul>
-<h3 id="4-forensic-grade-evidence-collection">4. Forensic-Grade Evidence Collection</h3>
-<p>Gibson&rsquo;s system prompt leakage module demonstrates the framework&rsquo;s commitment to professional security research:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Advanced evidence collection with chain of custody</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.modules.system_prompt_leakage.models <span style="color:#f92672">import</span> ForensicReport, BusinessImpact
+<p>Prometheus exports metrics: agent execution times, tool latencies, queue depths, finding counts by severity. Standard stuff that plugs into your existing monitoring.</p>
+
+<h2 id="cli">The CLI</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Start the daemon</span>
+</span></span><span style="display:flex;"><span>gibson daemon start
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Comprehensive forensic analysis</span>
-</span></span><span style="display:flex;"><span>report <span style="color:#f92672">=</span> ForensicReport(
-</span></span><span style="display:flex;"><span>    evidence_chain<span style="color:#f92672">=</span>[encrypted_conversation_data],
-</span></span><span style="display:flex;"><span>    attack_timeline<span style="color:#f92672">=</span>chronological_attack_events,
-</span></span><span style="display:flex;"><span>    business_impact<span style="color:#f92672">=</span>BusinessImpact(
-</span></span><span style="display:flex;"><span>        severity_level<span style="color:#f92672">=</span>SeverityLevel<span style="color:#f92672">.</span>CRITICAL,
-</span></span><span style="display:flex;"><span>        ip_sensitivity<span style="color:#f92672">=</span>IPSensitivity<span style="color:#f92672">.</span>TRADE_SECRET,
-</span></span><span style="display:flex;"><span>        financial_impact_estimate<span style="color:#f92672">=</span><span style="color:#ae81ff">500000.0</span>,
-</span></span><span style="display:flex;"><span>        compliance_violations<span style="color:#f92672">=</span>[gdpr_violation, hipaa_concern]
-</span></span><span style="display:flex;"><span>    ),
-</span></span><span style="display:flex;"><span>    technical_findings<span style="color:#f92672">=</span>detailed_vulnerability_analysis,
-</span></span><span style="display:flex;"><span>    legal_considerations<span style="color:#f92672">=</span>LegalAssessment(
-</span></span><span style="display:flex;"><span>        trade_secret_exposure<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>        nda_violations<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;client_system_architecture&#34;</span>],
-</span></span><span style="display:flex;"><span>        notification_requirements<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;board_disclosure&#34;</span>, <span style="color:#e6db74">&#34;customer_notice&#34;</span>]
-</span></span><span style="display:flex;"><span>    )
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p><strong>Professional Features:</strong></p>
-<ul>
-<li><strong>Chain of Custody</strong>: Cryptographically signed evidence handling</li>
-<li><strong>Business Impact Analysis</strong>: Financial risk assessment and compliance mapping</li>
-<li><strong>Legal Documentation</strong>: Ready-to-use reports for legal proceedings</li>
-<li><strong>Encrypted Storage</strong>: Secure handling of sensitive extracted data</li>
-<li><strong>Executive Summaries</strong>: C-level reporting for business stakeholders</li>
-</ul>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run a mission</span>
+</span></span><span style="display:flex;"><span>gibson mission run pentest.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check progress</span>
+</span></span><span style="display:flex;"><span>gibson mission show abc123
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pause and resume (checkpointing works)</span>
+</span></span><span style="display:flex;"><span>gibson mission pause abc123
+</span></span><span style="display:flex;"><span>gibson mission resume abc123
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Manage agents and tools</span>
+</span></span><span style="display:flex;"><span>gibson agent list
+</span></span><span style="display:flex;"><span>gibson agent install ghcr.io/my-org/my-agent:latest
+</span></span><span style="display:flex;"><span>gibson tool list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Export findings</span>
+</span></span><span style="display:flex;"><span>gibson finding list
+</span></span><span style="display:flex;"><span>gibson finding export --format sarif
+</span></span></code></pre></div>
+
+<h2 id="deployment">Deployment</h2>
+<p>Helm charts in <code>/deploy/</code>. Alpine-based container. Runs on any Kubernetes: EKS, GKE, AKS, k3s, OpenShift, air-gapped clusters.</p>
+<p>gRPC ports: 50001 (callback), 50002 (API), 9090 (metrics). Standard health probes at <code>/healthz</code> and <code>/readyz</code>. Graceful shutdown on SIGTERM.</p>
+<p>Data stays in your network. Your API keys. Your findings. Your knowledge graph. We don&rsquo;t see any of it.</p>
+
+<h2 id="what-people-build">What People Build</h2>
+<table>
+<thead>
+<tr><th>Domain</th><th>Examples</th></tr>
+</thead>
+<tbody>
+<tr><td>Security Testing</td><td>Vulnerability scanners, pentest automation, threat hunting</td></tr>
+<tr><td>LLM Security</td><td>Prompt injection testing, jailbreak detection, data extraction</td></tr>
+<tr><td>DevOps</td><td>K8s troubleshooting, log analysis, incident response</td></tr>
+<tr><td>Compliance</td><td>Evidence collection, audit automation, policy validation</td></tr>
+</tbody>
+</table>
+
+<h2 id="why-not-langchain">Why Not LangChain/LangGraph?</h2>
+<p>LangChain is a Python library for chaining LLM calls. It&rsquo;s fine for prototypes.</p>
+<p>Gibson is infrastructure. It handles distributed tool execution, persistent knowledge graphs, multi-agent delegation, mission checkpointing, and deployment to environments where &ldquo;pip install&rdquo; isn&rsquo;t an option.</p>
+<p>Different tools for different problems.</p>
+
 <h2 id="getting-started">Getting Started</h2>
-<p>Gibson is currently in active development (40-50% complete) with a focus on production-ready security testing:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Clone and install development version</span>
-</span></span><span style="display:flex;"><span>git clone https://github.com/zero-day-ai/gibson-framework
-</span></span><span style="display:flex;"><span>cd gibson-framework
-</span></span><span style="display:flex;"><span>make install-dev
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/zero-day-ai/gibson
+</span></span><span style="display:flex;"><span>cd gibson
+</span></span><span style="display:flex;"><span>make build
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Or using Poetry</span>
-</span></span><span style="display:flex;"><span>poetry install
-</span></span><span style="display:flex;"><span>poetry shell
-</span></span></code></pre></div><h3 id="quick-start-example">Quick Start Example</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.modules.manager <span style="color:#f92672">import</span> get_module_manager
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set your LLM provider</span>
+</span></span><span style="display:flex;"><span>export ANTHROPIC_API_KEY<span style="color:#f92672">=</span>sk-...
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># or OPENAI_API_KEY, GOOGLE_API_KEY, OLLAMA_HOST</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize Gibson with automatic module discovery</span>
-</span></span><span style="display:flex;"><span>manager <span style="color:#f92672">=</span> get_module_manager()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Search available security modules</span>
-</span></span><span style="display:flex;"><span>modules <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>search(
-</span></span><span style="display:flex;"><span>    query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;injection&#34;</span>,
-</span></span><span style="display:flex;"><span>    category<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;llm-prompt-injection&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Found </span><span style="color:#e6db74">{</span>len(modules)<span style="color:#e6db74">}</span><span style="color:#e6db74"> prompt injection modules&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Execute comprehensive security scan</span>
-</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> manager<span style="color:#f92672">.</span>execute(
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;prompt-injection&#34;</span>,
-</span></span><span style="display:flex;"><span>    target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://your-llm-api.com/chat&#34;</span>,
-</span></span><span style="display:flex;"><span>    context<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;attack_vectors&#34;</span>: [<span style="color:#e6db74">&#34;direct&#34;</span>, <span style="color:#e6db74">&#34;multi_turn&#34;</span>, <span style="color:#e6db74">&#34;evasion&#34;</span>]}
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Process findings with detailed evidence</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> finding <span style="color:#f92672">in</span> result<span style="color:#f92672">.</span>findings:
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">[</span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>severity<span style="color:#f92672">.</span>upper()<span style="color:#e6db74">}</span><span style="color:#e6db74">] </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>title<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;OWASP Category: </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>owasp_category<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Confidence: </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>confidence<span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Evidence: </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>evidence[<span style="color:#e6db74">&#39;attack_payload&#39;</span>][:<span style="color:#ae81ff">100</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">...&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Remediation: </span><span style="color:#e6db74">{</span>finding<span style="color:#f92672">.</span>remediation<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span></code></pre></div><h3 id="command-line-interface">Command Line Interface</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Run comprehensive OWASP AI Top 10 scan</span>
-</span></span><span style="display:flex;"><span>gibson scan --target https://api.company.com/llm --profile owasp-ai-top10
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Execute specific security modules</span>
-</span></span><span style="display:flex;"><span>gibson scan --modules prompt-injection,system-prompt-leakage --target https://api.example.com/chat
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Module management with registry integration</span>
-</span></span><span style="display:flex;"><span>gibson module search <span style="color:#e6db74">&#34;data poisoning&#34;</span> --category llm-training-poisoning
-</span></span><span style="display:flex;"><span>gibson module install community/advanced-jailbreak-v3
-</span></span><span style="display:flex;"><span>gibson module list --installed --category llm-security
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Upcoming: Launch graph analysis environment</span>
-</span></span><span style="display:flex;"><span>gibson graph launch --data ./conversation_logs.json
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Automatically opens Neo4j browser with conversation data loaded</span>
-</span></span></code></pre></div><h2 id="architecture-deep-dive">Architecture Deep Dive</h2>
-<h3 id="async-first-enterprise-architecture">Async-First Enterprise Architecture</h3>
-<p>Gibson is built from the ground up for production environments:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Concurrent security module execution</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gibson.modules.manager <span style="color:#f92672">import</span> get_module_manager
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>manager <span style="color:#f92672">=</span> get_module_manager()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Execute multiple security modules concurrently</span>
-</span></span><span style="display:flex;"><span>module_tasks <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>    manager<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#34;prompt-injection&#34;</span>, target),
-</span></span><span style="display:flex;"><span>    manager<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#34;model-theft&#34;</span>, target),
-</span></span><span style="display:flex;"><span>    manager<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#34;system-prompt-leakage&#34;</span>, target)
-</span></span><span style="display:flex;"><span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>gather(<span style="color:#f92672">*</span>module_tasks, return_exceptions<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> result <span style="color:#f92672">in</span> results:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isinstance(result, <span style="color:#a6e22e">Exception</span>):
-</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">.</span>error(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Module execution failed: </span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Found </span><span style="color:#e6db74">{</span>len(result<span style="color:#f92672">.</span>findings)<span style="color:#e6db74">}</span><span style="color:#e6db74"> security issues&#34;</span>)
-</span></span></code></pre></div><p><strong>Key Architectural Decisions:</strong></p>
-<ul>
-<li><strong>SQLAlchemy 2.0</strong>: Modern async ORM with full typing support</li>
-<li><strong>Pydantic Models</strong>: Comprehensive data validation and serialization</li>
-<li><strong>Rich Console Output</strong>: Professional CLI with progress bars and formatting</li>
-<li><strong>Modular Plugin System</strong>: Hot-swappable security modules without framework restarts</li>
-<li><strong>Database-Backed State</strong>: Persistent execution history and performance analytics</li>
-</ul>
-<h2 id="current-development-status--roadmap">Current Development Status &amp; Roadmap</h2>
-<h3 id="whats-working-now-v04x">What&rsquo;s Working Now (v0.4.x)</h3>
-<p>✅ <strong>Core Framework</strong>: Async architecture with SQLAlchemy 2.0 and Pydantic models<br>
-✅ <strong>Module System</strong>: Database-backed module registry with auto-discovery<br>
-✅ <strong>Security Modules</strong>: 6+ OWASP-aligned modules including advanced system prompt leakage<br>
-✅ <strong>CLI Interface</strong>: Rich-powered command line with scan, module, and target management<br>
-✅ <strong>Evidence Collection</strong>: Forensic-grade reporting with legal documentation support<br>
-✅ <strong>Database Integration</strong>: SQLite-based persistence with execution tracking</p>
-<h3 id="active-development-v05x---coming-soon">Active Development (v0.5.x - Coming Soon)</h3>
-<p>🚧 <strong>Neo4j Graph Integration</strong>: Visual attack path analysis (3-4 weeks out)<br>
-🚧 <strong>Enhanced Reporting</strong>: PDF/HTML generation with executive summaries<br>
-🚧 <strong>Advanced Prompt Registry</strong>: Community-sourced attack payloads<br>
-🚧 <strong>Multi-Model Testing</strong>: Parallel testing across different LLM providers<br>
-🚧 <strong>CI/CD Integration</strong>: GitHub Actions and GitLab CI plugins</p>
-<h3 id="planned-features-v10x">Planned Features (v1.0.x)</h3>
-<p>🔮 <strong>Real-time Dashboard</strong>: Web-based monitoring interface<br>
-🔮 <strong>Module Chaining</strong>: Complex attack scenarios through module composition<br>
-🔮 <strong>Cloud Deployment</strong>: Docker containerization and Kubernetes support<br>
-🔮 <strong>ML-Enhanced Analysis</strong>: Pattern recognition and anomaly detection<br>
-🔮 <strong>Collaborative Research</strong>: Multi-user security research environments</p>
-<h2 id="the-research-impact">The Research Impact</h2>
-<h3 id="why-gibson-matters-for-ai-security">Why Gibson Matters for AI Security</h3>
-<p>AI security is moving beyond academic curiosity into business-critical territory. Gibson addresses this transition by providing:</p>
-<p><strong>For Security Teams:</strong></p>
-<ul>
-<li>Systematic testing methodologies aligned with industry standards (OWASP AI Top 10)</li>
-<li>Professional-grade evidence collection suitable for compliance and legal proceedings</li>
-<li>Comprehensive vulnerability assessment covering the full AI attack surface</li>
-</ul>
-<p><strong>For Researchers:</strong></p>
-<ul>
-<li>Extensible framework for developing and sharing new attack techniques</li>
-<li>Rich data models for analyzing conversation-based attacks</li>
-<li>Graph-based visualization for discovering previously unknown attack patterns</li>
-</ul>
-<p><strong>For Developers:</strong></p>
-<ul>
-<li>Early-stage security testing integration into AI development workflows</li>
-<li>Clear remediation guidance for identified vulnerabilities</li>
-<li>Automated testing capabilities for continuous security validation</li>
-</ul>
-<h3 id="real-world-applications">Real-World Applications</h3>
-<p>Gibson is already being used to:</p>
-<ul>
-<li><strong>Audit Enterprise AI Systems</strong>: Financial services companies testing customer-facing chatbots</li>
-<li><strong>Research Novel Attack Vectors</strong>: Security researchers discovering new prompt injection techniques</li>
-<li><strong>Compliance Validation</strong>: Organizations ensuring AI systems meet regulatory requirements</li>
-<li><strong>Red Team Exercises</strong>: Security teams simulating sophisticated AI-targeted attacks</li>
-</ul>
-<h2 id="join-the-community">Join the Community</h2>
-<p>Gibson represents a collaborative approach to solving AI security challenges. We&rsquo;re building more than just a framework—we&rsquo;re cultivating a community of security researchers, developers, and practitioners working together to secure the AI ecosystem.</p>
-<p><strong>How to Get Involved:</strong></p>
-<ul>
-<li><strong>GitHub</strong>: <a href="https://github.com/zero-day-ai/gibson-framework">github.com/zero-day-ai/gibson-framework</a></li>
-<li><strong>Contributing</strong>: Module development, documentation, and security research</li>
-<li><strong>Issues &amp; Feature Requests</strong>: Help shape Gibson&rsquo;s development priorities</li>
-<li><strong>Security Research</strong>: Share your findings and learn from others&rsquo; discoveries</li>
-</ul>
-<p><strong>Contribution Areas:</strong></p>
-<ul>
-<li><strong>Security Modules</strong>: Develop new OWASP-aligned testing modules</li>
-<li><strong>Attack Research</strong>: Contribute novel attack techniques and payloads</li>
-<li><strong>Documentation</strong>: Help make AI security testing accessible to everyone</li>
-<li><strong>Integration</strong>: Build connectors for popular AI platforms and tools</li>
-<li><strong>Visualization</strong>: Enhance the upcoming Neo4j graph analysis features</li>
-</ul>
-<h2 id="the-future-of-ai-security-testing">The Future of AI Security Testing</h2>
-<p>The AI security landscape is evolving rapidly, with new vulnerabilities and attack vectors emerging as AI systems become more sophisticated. Gibson represents our commitment to staying ahead of these threats through systematic, professional security research.</p>
-<p><strong>What makes Gibson different:</strong></p>
-<ul>
-<li><strong>Production-Ready</strong>: Built for real-world security testing, not just academic research</li>
-<li><strong>Comprehensive Coverage</strong>: Full OWASP AI Top 10 implementation with forensic-grade evidence collection</li>
-<li><strong>Visual Intelligence</strong>: Upcoming Neo4j integration transforms attack analysis from linear logs to interactive pattern discovery</li>
-<li><strong>Professional Standards</strong>: Legal documentation, compliance mapping, and executive reporting built-in</li>
-</ul>
-<p>As we continue development toward v1.0, Gibson will become the standard toolkit for AI security professionals worldwide. The framework&rsquo;s modular architecture ensures it can adapt to emerging threats while maintaining the rigor and professionalism that enterprise security demands.</p>
-<p><strong>Join us</strong> in building the future of AI security. Every contribution—whether code, research, or community engagement—helps create a more secure AI ecosystem for everyone.</p>
+</span></span><span style="display:flex;"><span>gibson daemon start
+</span></span><span style="display:flex;"><span>gibson mission run examples/recon.yaml
+</span></span></code></pre></div>
+<p>Check the <a href="https://github.com/zero-day-ai/gibson">GitHub repo</a> for SDK examples and agent templates.</p>
+
+<h2 id="license">License</h2>
+<p>BSL 1.1. Use it however you want. Build commercial products on top of it. Just don&rsquo;t resell Gibson itself as a competing platform.</p>
 <hr>
-<p><em>Gibson Framework is released under the MIT License. The project is actively developed at <a href="https://github.com/zero-day-ai/gibson-framework">github.com/zero-day-ai/gibson-framework</a>. For security issues, please use our responsible disclosure process.</em></p>
+<p><em>Questions? <a href="https://calendly.com/zero-day-ai">Schedule a call</a> or open an issue on GitHub.</em></p>
 
     </div>
     
