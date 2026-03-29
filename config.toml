@@ -8,9 +8,9 @@ title = 'zero-day.ai'
       unsafe = true
 
 [params]
-    subtitle = 'K8s-Native Autonomous Agent Platform'
-    description = "Gibson is a K8s-native autonomous agent platform that deploys inside your infrastructure. Continuous pentesting, compliance automation, and infrastructure intelligence - on your cluster, behind your firewall."
-    keywords = "Kubernetes Security, Autonomous Agents, K8s Pentesting, Compliance Automation, DevSecOps, AI Agents, Infrastructure Security, Continuous Security Testing, SOC 2 Automation, FedRAMP, Air-Gapped Security, HIPAA Compliance, Security Platform"
+    subtitle = 'Production-Ready AI Agents on Kubernetes'
+    description = "The Kubernetes-native framework for building, deploying, and operating autonomous AI agents at scale. Orchestration, state management, observability, and scaling - deployed on your cluster, behind your firewall."
+    keywords = "AI Agents, Kubernetes AI, LLM Agents, Agent Framework, K8s Agents, Production AI, Agent Orchestration, GraphRAG, Neo4j Knowledge Graph, OpenTelemetry, Langfuse, Security Testing, Compliance Automation, Air-Gapped AI, Enterprise AI Platform"
     gibsonLogo = ""
     twitterURL = ""
     twitterText = ""
@@ -27,7 +27,7 @@ title = 'zero-day.ai'
     unfurlLogo = "/gibson-logo.png"
     unfurlCreator = ""
     unfurlSite = "https://zero-day.ai"
-    unfurlTitle = "zero-day.ai | K8s-Native Autonomous Agent Platform"
+    unfurlTitle = "Gibson | Production-Ready AI Agents on Kubernetes"
 
 [params.logo]
     logoUser = "gibson"

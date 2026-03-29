@@ -1,11 +1,11 @@
 <div class="home-hero">
 
     <h1>
-        Kubernetes for Security Testing
+        Production-Ready AI Agents on Kubernetes
     </h1>
 
     <p class="hero-tagline">
-        Gibson is an autonomous agent orchestration platform. You write agents in Go, they reason with LLMs, execute tools, and accumulate knowledge in a graph database. <strong>The whole thing runs on your cluster, not ours.</strong>
+        Stop building agent infrastructure. Start shipping agents. Gibson handles orchestration, state management, observability, and scaling&mdash;<strong>deployed on your cluster, behind your firewall.</strong>
     </p>
 
     <!-- Video Section -->
@@ -21,89 +21,125 @@
     <!-- CTA Buttons -->
     <div class="cta-buttons">
         <a href="https://calendly.com/zero-day-ai" class="button button-primary">
-            Book a Demo
+            Book Architecture Session
         </a>
         <a href="https://github.com/zero-day-ai/gibson" class="button">
-            <i class="fa fa-github"></i> View on GitHub
+            View on GitHub
         </a>
     </div>
 
-    <!-- Architecture Section -->
-    <div class="use-cases">
-        <h2>How It Works</h2>
-        <div class="use-case-grid">
-            <div class="use-case-card">
-                <h3>Agents That Reason</h3>
-                <p>Not scripts with if statements. Agents run an Observe-Think-Act loop, query knowledge graphs, and decide what to do next. Claude, GPT, Gemini, or local models via Ollama.</p>
-            </div>
-            <div class="use-case-card">
-                <h3>Tools Via Redis Queues</h3>
-                <p>Agents dispatch work to tool pods. kubectl, curl, terraform, nuclei, whatever you need. Type-safe Protocol Buffer I/O. Horizontal scaling via HPA.</p>
-            </div>
-            <div class="use-case-card">
-                <h3>GraphRAG Knowledge</h3>
-                <p>Neo4j stores everything agents learn: hosts, services, vulns, credentials, attack paths. Knowledge persists across missions. Agents get smarter over time.</p>
-            </div>
-        </div>
+    <!-- Problem/Solution Section -->
+    <div class="differentiator">
+        <h2>You've Built an Agent. Now What?</h2>
+        <p>
+            Wiring up Redis for state, Neo4j for knowledge graphs, observability for debugging, K8s operators for scaling, checkpoint recovery for failures&hellip; <strong>That's months of infrastructure work before your agent does anything useful.</strong>
+        </p>
+        <pre class="install-command">helm install gibson</pre>
+        <p style="margin-top: 20px; font-size: 0.95em; color: var(--alt-color);">
+            From prototype to production in minutes, not months.
+        </p>
     </div>
 
-    <!-- Differentiator Section -->
-    <div class="differentiator">
-        <h2>Why This Matters</h2>
+    <!-- Key Differentiator -->
+    <div class="differentiator" style="border-color: var(--highlight-color);">
+        <h2>Runs Inside Your Infrastructure</h2>
         <p>
-            SaaS security tools can't touch your internal network. They can't see what's behind your firewall. They definitely can't run in your air-gapped environment. <strong>Gibson deploys where your infrastructure actually lives.</strong>
+            Every competitor runs from their cloud and scans externally. They can't see what's behind your firewall. They can't touch your internal APIs. They definitely can't run in your air-gapped environment.
         </p>
+        <p><strong>Gibson deploys where your infrastructure actually lives.</strong></p>
         <ul class="diff-list">
-            <li><span class="check">&#10003;</span> Runs on any K8s: EKS, GKE, AKS, k3s, OpenShift, air-gapped clusters</li>
-            <li><span class="check">&#10003;</span> Your data stays in your network. Period.</li>
-            <li><span class="check">&#10003;</span> Build agents with the Go SDK. Ship them as containers.</li>
-            <li><span class="check">&#10003;</span> Full observability: OpenTelemetry, Langfuse, Prometheus</li>
+            <li><span class="check">&#10003;</span> Deploys to any K8s: EKS, GKE, AKS, k3s, OpenShift, air-gapped</li>
+            <li><span class="check">&#10003;</span> Your data never leaves your network</li>
+            <li><span class="check">&#10003;</span> FedRAMP, ITAR, HIPAA, NYDFS compliant deployments</li>
+            <li><span class="check">&#10003;</span> Bring your own LLM keys&mdash;Claude, GPT, Gemini, or local via Ollama</li>
         </ul>
+    </div>
+
+    <!-- Platform Capabilities -->
+    <div class="use-cases">
+        <h2>What You Get</h2>
+        <div class="use-case-grid">
+            <div class="use-case-card">
+                <h3>Multi-LLM Support</h3>
+                <p>Claude, GPT-4, Gemini, Ollama. Switch providers without code changes. Your API keys, your cost control.</p>
+            </div>
+            <div class="use-case-card">
+                <h3>Knowledge Graph</h3>
+                <p>Neo4j-backed entity storage. Agents accumulate knowledge across missions. Automatic relationship extraction. Vector search built in.</p>
+            </div>
+            <div class="use-case-card">
+                <h3>Mission Orchestration</h3>
+                <p>DAG-based workflows with checkpointing and crash recovery. Chain agents, tools, and conditions. Resume where you left off.</p>
+            </div>
+            <div class="use-case-card">
+                <h3>Full Observability</h3>
+                <p>OpenTelemetry tracing, Langfuse for LLM debugging, Prometheus metrics. See exactly what your agents are thinking.</p>
+            </div>
+            <div class="use-case-card">
+                <h3>K8s-Native Scaling</h3>
+                <p>Health probes, HPA scaling, graceful shutdown. Agents and tools run as pods. Scale horizontally out of the box.</p>
+            </div>
+            <div class="use-case-card">
+                <h3>Type-Safe Tools</h3>
+                <p>Protocol Buffer I/O for all tool interactions. Automatic schema validation. Build tools in any language.</p>
+            </div>
+        </div>
     </div>
 
     <!-- Use Cases Section -->
     <div class="use-cases">
-        <h2>What People Build</h2>
+        <h2>What Teams Build</h2>
         <div class="use-case-grid">
             <div class="use-case-card">
                 <h3>Security Testing</h3>
-                <p>Continuous pentesting agents that find vulns, chain exploits, and write findings with full provenance. Runs in CI/CD or on a schedule.</p>
+                <p>Continuous pentesting that finds vulns, chains exploits, and documents findings. Integrated into CI/CD. Runs against internal targets external scanners can't reach.</p>
             </div>
             <div class="use-case-card">
                 <h3>Compliance Automation</h3>
-                <p>Evidence collection agents that gather artifacts, validate controls, and generate audit-ready reports. SOC 2, PCI-DSS, HIPAA, FedRAMP.</p>
+                <p>Evidence collection agents that gather artifacts, validate controls, and generate audit-ready reports. SOC 2, PCI-DSS, HIPAA, FedRAMP&mdash;continuous, not annual.</p>
             </div>
             <div class="use-case-card">
-                <h3>Infrastructure Ops</h3>
-                <p>Agents that troubleshoot K8s issues, analyze logs, respond to incidents. Delegate to sub-agents. Chain complex workflows.</p>
+                <h3>Infrastructure Intelligence</h3>
+                <p>API discovery, architecture documentation, drift detection. Agents that understand your environment and keep that understanding current.</p>
             </div>
         </div>
     </div>
 
-    <!-- Services Section -->
+    <!-- Social Proof Placeholder -->
+    <!--
+    <div class="social-proof">
+        <h2>Trusted By</h2>
+        <div class="logo-grid">
+            [Company logos here when available]
+        </div>
+    </div>
+    -->
+
+    <!-- How We Work -->
     <div class="services-section">
         <h2>How We Work</h2>
         <div class="service-options">
             <div class="service-card">
-                <h3>Platform Deployment</h3>
-                <p>We deploy Gibson on your cluster, integrate it with your stack, build mission profiles, and run ongoing operations. You get findings, not invoices for hours.</p>
+                <h3>Architecture Session</h3>
+                <p>30 minutes to map Gibson to your use case. No slides&mdash;just architecture. We'll show you exactly how it fits your stack.</p>
             </div>
             <div class="service-card">
-                <h3>Custom Agent Dev</h3>
-                <p>Got a weird use case? Good. We build agents for things that don't fit in a checkbox: compliance evidence collection, API discovery, threat hunting, whatever.</p>
+                <h3>Platform Deployment</h3>
+                <p>We deploy Gibson on your cluster, integrate with your stack, build custom agents for your use case. You get outcomes, not hours billed.</p>
             </div>
             <div class="service-card">
                 <h3>Partner Program</h3>
-                <p>MSSPs and consultancies: white-label Gibson for your clients. You sell it, we operate it. <a href="/partner">Details &rarr;</a></p>
+                <p>MSSPs and consultancies: add autonomous agent capabilities your competitors can't offer. You sell it, we operate it. <a href="/partner">Learn more &rarr;</a></p>
             </div>
         </div>
     </div>
 
     <!-- Final CTA -->
     <div class="final-cta">
-        <p>Want to see it run?</p>
+        <h3>Let's Design Your Agent Infrastructure</h3>
+        <p>30 minutes to map Gibson to your use case. No slides, just architecture.</p>
         <a href="https://calendly.com/zero-day-ai" class="button button-primary button-large">
-            Schedule a Demo
+            Book Architecture Session
         </a>
     </div>
 
