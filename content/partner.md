@@ -1,6 +1,6 @@
 ---
 title: "Partner With Us"
-description: "Add autonomous AI agent capabilities to your consulting practice. Gibson deploys inside client infrastructure - a capability no competitor offers."
+description: "Help your clients ship production AI agents without building the infrastructure from scratch. Gibson deploys inside client infrastructure — a capability no competitor offers."
 ---
 
 <div class="partner-page">
@@ -8,16 +8,16 @@ description: "Add autonomous AI agent capabilities to your consulting practice. 
 # Partner With Us
 
 <p class="partner-intro">
-Consulting firms and MSSPs: Add a differentiated capability your competitors don't have. Gibson deploys <strong>inside</strong> client infrastructure, enabling services that cloud-hosted tools simply cannot deliver.
+Consultancies and system integrators: your clients are being told to ship AI agents. They don't know how to do it in a way that works in production. Gibson gives you the infrastructure to deliver that — deployed <strong>inside</strong> their cluster, behind their firewall.
 </p>
 
 <div class="partner-section">
 
-## The Problem You Solve
+## The Problem Your Clients Have
 
-Every DevSecOps firm sells the same services with the same tools. Your clients need continuous security testing, but your competitors offer the exact same capabilities. Gibson changes that equation.
+Every engineering org is being told to "ship agents." Most will spend 6-12 months building infrastructure that falls apart at scale — stitching together vector databases, prompt chains, and custom orchestration that nobody can maintain.
 
-With Gibson, you can offer autonomous agent capabilities that run on your client's cluster, behind their firewall, in air-gapped and classified environments. No other tool on the market does this.
+Gibson changes that equation. With Gibson, you deliver production agent infrastructure on day one: persistent memory, knowledge graphs, mission orchestration, multi-LLM abstraction, and full observability. Running on your client's cluster, not in a cloud sandbox.
 
 </div>
 
@@ -29,9 +29,9 @@ You sell the engagement. We deploy and operate Gibson. You keep the client relat
 
 <ul class="partner-benefits">
 <li><span class="check">&#10003;</span> <strong>No procurement headaches</strong> — We work as your subcontractor, not a vendor your client needs to evaluate</li>
-<li><span class="check">&#10003;</span> <strong>Your branded deliverables</strong> — Reports and findings go out under your name</li>
+<li><span class="check">&#10003;</span> <strong>Your branded deliverables</strong> — Agents, reports, and dashboards go out under your name</li>
 <li><span class="check">&#10003;</span> <strong>Recurring revenue</strong> — Monthly operations fees, not one-time projects</li>
-<li><span class="check">&#10003;</span> <strong>Differentiated capability</strong> — Offer something nobody else can: AI agents inside the client's infrastructure</li>
+<li><span class="check">&#10003;</span> <strong>Differentiated capability</strong> — Production agent infrastructure deployed inside client environments. Nobody else does this.</li>
 <li><span class="check">&#10003;</span> <strong>Classified-ready</strong> — Gibson deploys in air-gapped, FedRAMP, ITAR, and DoD environments</li>
 </ul>
 
@@ -55,8 +55,10 @@ Your margin on a capability you don't have to build or maintain.
 
 ## Ideal Partner Profile
 
+- **Platform engineering consultancies** helping clients build internal AI/agent capabilities
+- **System integrators** delivering enterprise AI solutions at scale
 - **DevSecOps consultancies** serving enterprise and regulated industries
-- **MSSPs** looking to add offensive security capabilities
+- **MSSPs** looking to add autonomous agent capabilities
 - **Defense contractors** with classified environment requirements
 - **Compliance-focused firms** serving financial services, healthcare, or government
 

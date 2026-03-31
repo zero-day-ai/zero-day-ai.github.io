@@ -8,9 +8,9 @@ title = 'zero-day.ai'
       unsafe = true
 
 [params]
-    subtitle = 'Build AI Agents That Work in Production'
-    description = "The platform for running autonomous AI agents in production. Persistent memory, knowledge graphs, mission orchestration, and full observability—the infrastructure stateless frameworks can't give you."
-    keywords = "AI Agents, Agent SDK, LLM Agents, Agent Framework, Production AI, Agent Orchestration, GraphRAG, Neo4j Knowledge Graph, OpenTelemetry, Langfuse, Go SDK, TypeScript SDK, Python SDK, Security Testing, Compliance Automation, Enterprise AI Platform"
+    subtitle = 'Production Agent Infrastructure. Already Built.'
+    description = "Your team is about to spend a year building agent infrastructure the wrong way. Gibson is the opinionated, Kubernetes-native framework that skips that. Persistent memory, knowledge graphs, mission orchestration, and full observability—deployed in your cluster, not ours."
+    keywords = "AI Agent Infrastructure, Agent Framework, Production AI Agents, Agent Orchestration, LLM Agent SDK, Agent Platform, Kubernetes AI Agents, Enterprise Agent Framework, GraphRAG, Neo4j Knowledge Graph, Go SDK, OpenTelemetry, Platform Engineering, Agent Development"
     gibsonLogo = ""
     twitterURL = ""
     twitterText = ""
@@ -27,7 +27,7 @@ title = 'zero-day.ai'
     unfurlLogo = "/gibson-logo.png"
     unfurlCreator = ""
     unfurlSite = "https://zero-day.ai"
-    unfurlTitle = "Gibson | Build AI Agents That Work in Production"
+    unfurlTitle = "Gibson | Production Agent Infrastructure. Already Built."
 
 [params.logo]
     logoUser = "gibson"
